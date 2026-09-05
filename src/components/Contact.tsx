@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Terminal, User, Bot, CheckCircle2 } from "lucide-react";
+import { Send, Terminal, User, Bot, CheckCircle2, Phone, Mail, MessageCircle } from "lucide-react";
 
 type Message = {
   id: string;
@@ -114,9 +114,49 @@ export default function Contact() {
               Zamanınızın değerli olduğunu biliyoruz. Yüzlerce alan doldurmak yerine, akıllı asistanımızla 3 adımda projenizin taslağını oluşturun ve hemen aksiyon alalım.
             </p>
             
-            <div className="flex items-center gap-4 text-sm font-medium text-foreground/70 bg-foreground/5 w-fit px-6 py-3 rounded-full border border-border">
+            <div className="flex items-center gap-4 text-sm font-medium text-foreground/70 bg-foreground/5 w-fit px-6 py-3 rounded-full border border-border mb-12">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Şükrü BAŞ şu an <span className="text-foreground">{t("contact_status")}</span>
+            </div>
+
+            {/* Direct Contact Card */}
+            <div className="w-full bg-foreground/5 border border-border rounded-3xl p-8 backdrop-blur-sm relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[50px] -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
+              
+              <h3 className="text-xl font-bold mb-2">Direkt İletişime Geçin</h3>
+              <p className="text-sm text-foreground/60 mb-8">Yapay zeka asistanını beklemek istemiyorsanız, doğrudan ulaşabilirsiniz.</p>
+              
+              <div className="flex flex-col gap-4">
+                <a href="https://wa.me/905458822670" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-[#25D366]/10 hover:border-[#25D366]/30 border border-border transition-all group/item">
+                  <div className="w-10 h-10 rounded-full bg-[#25D366]/10 flex items-center justify-center text-[#25D366]">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-foreground group-hover/item:text-[#25D366] transition-colors">WhatsApp'tan Yazın</p>
+                    <p className="text-xs text-foreground/50">+90 545 882 2670</p>
+                  </div>
+                </a>
+
+                <a href="tel:+905458822670" className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-blue-500/10 hover:border-blue-500/30 border border-border transition-all group/item">
+                  <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-foreground group-hover/item:text-blue-500 transition-colors">Hemen Arayın</p>
+                    <p className="text-xs text-foreground/50">+90 545 882 2670</p>
+                  </div>
+                </a>
+
+                <a href="mailto:hello.mainx@gmail.com" className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-primary/10 hover:border-primary/30 border border-border transition-all group/item">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">E-Posta Gönderin</p>
+                    <p className="text-xs text-foreground/50">hello.mainx@gmail.com</p>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
 

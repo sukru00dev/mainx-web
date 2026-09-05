@@ -65,17 +65,6 @@ export default function Hero() {
           
           {/* Left Text Content */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 border border-border text-foreground/70 text-sm font-medium mb-8 backdrop-blur-md hover:bg-foreground/10 hover:border-foreground/20 transition-all cursor-pointer"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="flex items-center gap-2">
-                {t("hero_badge")} <ChevronRight className="w-3 h-3" />
-              </span>
-            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
