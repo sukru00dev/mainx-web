@@ -51,8 +51,8 @@ export default function Header() {
         <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-[100rem] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group z-10">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
-              <Terminal className="w-5 h-5 text-primary" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
+              <img src="/logo.png" alt="MainX Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-bold text-xl tracking-tight text-foreground">
               MainX<span className="text-primary">.</span>
