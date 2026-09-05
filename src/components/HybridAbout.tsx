@@ -40,7 +40,7 @@ export default function HybridAbout() {
               geniş bir ekosistem inşa ediyoruz.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <Code className="w-8 h-8 text-primary mb-2" />
                 <h4 className="font-bold text-lg">Temiz Kod</h4>

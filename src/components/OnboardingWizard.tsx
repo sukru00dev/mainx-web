@@ -94,7 +94,7 @@ Lütfen benimle iletişime geçin.
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-500 to-amber-500" />
         
         {/* Header */}
-        <div className="p-6 border-b border-border flex items-center justify-between">
+        <div className="p-4 md:p-6 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Rocket className="w-5 h-5 text-primary" />
             <span className="font-bold text-foreground">Proje Başlat</span>
@@ -126,7 +126,7 @@ Lütfen benimle iletişime geçin.
         )}
 
         {/* Content */}
-        <div className="p-8 flex-1 overflow-y-auto">
+        <div className="p-4 md:p-8 flex-1 overflow-y-auto">
           <AnimatePresence mode="wait">
             {isCompleted ? (
               <motion.div 
@@ -257,7 +257,7 @@ Lütfen benimle iletişime geçin.
 
         {/* Footer Actions */}
         {!isCompleted && (
-          <div className="p-6 border-t border-border flex items-center justify-between bg-foreground/[0.02]">
+          <div className="p-4 md:p-6 border-t border-border flex items-center justify-between bg-foreground/[0.02]">
             <button
               onClick={handlePrev}
               disabled={currentStep === 1}

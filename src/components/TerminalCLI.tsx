@@ -83,7 +83,7 @@ export default function TerminalCLI() {
                 </div>
               </div>
               
-              <div className="p-6 h-[300px] overflow-y-auto text-green-400 whitespace-pre-wrap">
+              <div className="p-4 md:p-6 h-[300px] overflow-y-auto text-green-400 whitespace-pre-wrap" onClick={() => inputRef.current?.focus()}>
                 {history.map((entry, i) => (
                   <div key={i} className="mb-4">
                     {entry.command && (

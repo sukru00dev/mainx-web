@@ -51,7 +51,7 @@ export default function FloatingToC() {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4">
+    <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4">
       {sections.map(({ id, label }) => {
         const isActive = activeId === id;
         return (

@@ -120,7 +120,7 @@ export default function Contact() {
             </div>
 
             {/* Direct Contact Card */}
-            <div className="w-full bg-foreground/5 border border-border rounded-3xl p-8 backdrop-blur-sm relative overflow-hidden group">
+            <div className="w-full bg-foreground/5 border border-border rounded-3xl p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[50px] -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
               
               <h3 className="text-xl font-bold mb-2">Direkt İletişime Geçin</h3>
