@@ -7,6 +7,7 @@ import Link from "next/link";
 const catalogItems = [
   {
     title: "Özel B2B SaaS Geliştirme",
+    slug: "ozel-saas-yazilimlari",
     description: "İşletmenizin tüm verilerini, personellerini ve operasyonlarını yöneteceğiniz bulut tabanlı (Cloud) özel paneller (Dashboard). Tamamen size ait ve dışa kapalı mimari.",
     techs: ["Next.js", "React", "Node.js", "PostgreSQL", "Docker"],
     icon: CloudCog,
@@ -14,6 +15,7 @@ const catalogItems = [
   },
   {
     title: "Mobil Uygulama (iOS & Android)",
+    slug: "mobil-uygulama-gelistirme",
     description: "Flutter altyapısıyla her iki platformda da kusursuz çalışan, yüksek performanslı ve offline-first (çevrimdışı çalışabilen) modern mobil uygulamalar.",
     techs: ["Flutter", "Dart", "Firebase", "Hive NoSQL"],
     icon: Smartphone,
@@ -21,6 +23,7 @@ const catalogItems = [
   },
   {
     title: "Yapay Zeka (AI) Entegrasyonu",
+    slug: "yapay-zeka-entegrasyonu",
     description: "İşletmenize özel otonom ajanlar, veri analiz botları ve LLM (Büyük Dil Modeli) destekli müşteri hizmetleri otomasyonları.",
     techs: ["Python", "FastAPI", "n8n", "Ollama", "OpenAI"],
     icon: Code2,
@@ -28,6 +31,7 @@ const catalogItems = [
   },
   {
     title: "Blockchain & Veri Güvenliği",
+    slug: "blockchain-cozumleri",
     description: "Akıllı sözleşmeler (Smart Contracts), gizlilik odaklı DApp'ler ve Hyperledger Fabric ile özel kurumsal blok zinciri ağları.",
     techs: ["Hyperledger Fabric", "Go", "Solidity", "Web3"],
     icon: Blocks,
@@ -90,38 +94,40 @@ export default function KatalogPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {catalogItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/30 transition-all group flex flex-col"
-            >
-              <div className="flex items-start justify-between mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-primary/50 transition-transform">
-                  <item.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />
-                </div>
-                <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/70">
-                  {item.price}
-                </span>
-              </div>
-              
-              <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-              <p className="text-white/60 leading-relaxed mb-8 flex-grow">
-                {item.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/5">
-                {item.techs.map((t, i) => (
-                  <span key={i} className="text-xs font-semibold px-3 py-1 bg-primary/10 border border-primary/20 rounded-md text-primary">
-                    {t}
+          {catalogItems.map((item, index) => {
+            const CardWrapper = item.slug ? Link : motion.div;
+            const wrapperProps = item.slug ? { href: `/hizmetler/${item.slug}` } : {};
+
+            return (
+              <CardWrapper
+                {...wrapperProps}
+                key={index}
+                className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/30 transition-all group flex flex-col block"
+              >
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-primary/50 transition-transform">
+                    <item.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />
+                  </div>
+                  <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/70">
+                    {item.price}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-white/60 leading-relaxed mb-8 flex-grow">
+                  {item.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/5">
+                  {item.techs.map((t, i) => (
+                    <span key={i} className="text-xs font-semibold px-3 py-1 bg-primary/10 border border-primary/20 rounded-md text-primary">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </CardWrapper>
+            );
+          })}
         </div>
 
         {/* CTA */}

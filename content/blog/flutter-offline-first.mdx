@@ -1,0 +1,28 @@
+﻿---
+title: "Flutter ile Offline-First Uygulama Geliştirme (Hive NoSQL)"
+description: "İnternet bağlantısı olmadan da tam performanslı çalışan mobil uygulamalar nasıl geliştirilir? Hive NoSQL ve Flutter'ı birlikte kullanarak 'offline-first' mimari kuruyoruz."
+tags: ["Flutter", "Dart", "Hive", "Mobile"]
+readTime: "8 dk"
+date: "2024-02-15"
+featured: false
+---
+
+# Offline-First Yaklaşımı Nedir?
+
+Mobil uygulamalar genellikle veri çekmek için internet bağlantısına güvenirler. Ancak metroda, kırsal alanda veya internetin zayıf olduğu anlarda uygulamanın işlevini yitirmemesi gerekir. Offline-first mimari, verinin öncelikle yerel veritabanına yazılmasını ve internet bulunduğunda arka planda sunucuyla senkronize edilmesini sağlar.
+
+## Flutter ve Hive NoSQL
+
+Flutter ekosisteminde yerel veritabanı seçeneklerinden biri olan **Hive**, tamamen Dart ile yazılmış oldukça hızlı bir NoSQL veritabanıdır.
+
+`dart
+import 'package:hive/hive.dart';
+
+void main() async {
+  var box = await Hive.openBox('testBox');
+  box.put('name', 'MainX Stüdyoları');
+  print('Name: ');
+}
+`
+
+Bu yapı ile kullanıcının verilerini anında cihaza kaydedip, uygulama deneyimini kesintisiz hale getirebiliriz.
