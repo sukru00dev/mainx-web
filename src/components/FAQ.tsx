@@ -38,7 +38,7 @@ export default function FAQ() {
       <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-[100rem]">
         
         <div className="flex flex-col lg:flex-row gap-16 items-start">
-          <div className="lg:w-1/3 sticky top-32">
+          <div className="w-full lg:w-1/3 relative lg:sticky lg:top-32 z-10">
             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
               <MessageCircleQuestion className="w-8 h-8 text-primary" />
             </div>
