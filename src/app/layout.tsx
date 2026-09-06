@@ -11,6 +11,7 @@ import ScrollFix from "@/components/ScrollFix";
 import SplashScreen from "@/components/SplashScreen";
 import MatrixOverlay from "@/components/MatrixOverlay";
 import OnboardingWizard from "@/components/OnboardingWizard";
+import DesignAssistant from "@/components/DesignAssistant";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <OnboardingWizard />
             <MatrixOverlay />
+            <DesignAssistant />
           </LanguageProvider>
         </ThemeProvider>
       </body>
