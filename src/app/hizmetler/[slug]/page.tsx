@@ -1,4 +1,4 @@
-﻿import { constructMetadata } from "@/lib/seo";
+import { constructMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, Code2, Server, Smartphone, BrainCircuit, Blocks } from "lucide-react";
@@ -30,14 +30,15 @@ const services = {
   }
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = services[params.slug as keyof typeof services];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const service = services[resolvedParams.slug as keyof typeof services];
   if (!service) return constructMetadata();
 
   return constructMetadata({
     title: `${service.title} Hizmetleri | MainX`,
     description: service.description,
-    path: `/hizmetler/${params.slug}`,
+    path: `/hizmetler/${resolvedParams.slug}`,
   });
 }
 
@@ -47,8 +48,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = services[params.slug as keyof typeof services];
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const service = services[resolvedParams.slug as keyof typeof services];
   
   if (!service) {
     notFound();

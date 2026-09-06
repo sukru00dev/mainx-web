@@ -95,15 +95,8 @@ export default function KatalogPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {catalogItems.map((item, index) => {
-            const CardWrapper = item.slug ? Link : motion.div;
-            const wrapperProps = item.slug ? { href: `/hizmetler/${item.slug}` } : {};
-
-            return (
-              <CardWrapper
-                {...wrapperProps}
-                key={index}
-                className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/30 transition-all group flex flex-col block"
-              >
+            const content = (
+              <>
                 <div className="flex items-start justify-between mb-8">
                   <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-primary/50 transition-transform">
                     <item.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors" />
@@ -125,7 +118,30 @@ export default function KatalogPage() {
                     </span>
                   ))}
                 </div>
-              </CardWrapper>
+              </>
+            );
+
+            const className = "p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/30 transition-all group flex flex-col block";
+
+            if (item.slug) {
+              return (
+                <Link href={`/hizmetler/${item.slug}`} key={index} className={className}>
+                  {content}
+                </Link>
+              );
+            }
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={className}
+              >
+                {content}
+              </motion.div>
             );
           })}
         </div>
