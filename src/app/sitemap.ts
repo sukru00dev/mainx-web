@@ -1,24 +1,31 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://mainx.com.tr",
+      url: SITE_URL,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: "https://mainx.com.tr/katalog",
+      url: `${SITE_URL}/katalog`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: "https://mainx.com.tr/blog",
+      url: `${SITE_URL}/blog`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/sanliurfa-yazilim`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ];
 }

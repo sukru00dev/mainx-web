@@ -19,8 +19,8 @@ const translations = {
 
     // Hero
     hero_badge: "TÜBİTAK 2209-A Blok Zinciri Projesi Onaylandı",
-    hero_title1: "Silikon Vadisi Standartlarında",
-    hero_title2: "Dijital Mühendislik.",
+    hero_title1: "Modern Dijital Ürünler ve",
+    hero_title2: "Yazılım Çözümleri.",
     hero_desc: "MainX Stüdyoları by Şükrü BAŞ. Kurumsal firmalar için ölçeklenebilir B2B SaaS panelleri, otonom yapay zeka ajanları ve güvenli blok zinciri mimarileri inşa ediyoruz.",
     hero_cta1: "Proje Başlat",
     hero_cta2: "Hizmet Kataloğu",
@@ -190,8 +190,8 @@ const translations = {
 
     // Hero
     hero_badge: "TÜBİTAK 2209-A Blockchain Project Approved",
-    hero_title1: "Silicon Valley Standards of",
-    hero_title2: "Digital Engineering.",
+    hero_title1: "Modern Digital Products and",
+    hero_title2: "Software Solutions.",
     hero_desc: "MainX Studios by Şükrü BAŞ. We build scalable B2B SaaS dashboards, autonomous AI agents, and secure blockchain architectures for enterprises.",
     hero_cta1: "Start a Project",
     hero_cta2: "Service Catalog",

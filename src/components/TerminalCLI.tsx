@@ -9,6 +9,7 @@ export default function TerminalCLI() {
     { command: "", output: "MainX OS v6.0.0 başlatıldı.\nKullanılabilir komutları görmek için 'help' yazın." }
   ]);
   const endRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const prevHistoryLength = useRef(history.length);
 
@@ -101,6 +102,7 @@ export default function TerminalCLI() {
                   <span className="text-primary">➜</span> 
                   <span className="text-blue-400">~</span>
                   <input 
+                    ref={inputRef}
                     type="text" 
                     value={input}
                     onChange={(e) => setInput(e.target.value)}

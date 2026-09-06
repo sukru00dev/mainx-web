@@ -1,50 +1,17 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-
-import { motion, animate, useInView } from "framer-motion";
-
-interface CounterProps {
-  target: number;
-  suffix?: string;
-  prefix?: string;
-  duration?: number;
-}
-
-function AnimatedCounter({ target, suffix = "", prefix = "", duration = 2 }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(0, target, {
-        duration,
-        ease: "easeOut",
-        onUpdate: (value) => {
-          setCount(Math.floor(value));
-        }
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, target, duration]);
-
-  return (
-    <span ref={ref}>
-      {prefix}{count}{suffix}
-    </span>
-  );
-}
+import { motion } from "framer-motion";
+import { Code2, Blocks, Server, CheckCircle } from "lucide-react";
 
 export default function LiveCounter() {
   const { t } = useLanguage();
 
   const stats = [
-    { label: t("counter_code"), target: 850, suffix: "K+", prefix: "", color: "text-blue-500", bg: "from-blue-500/10" },
-    { label: t("counter_projects"), target: 140, suffix: "+", prefix: "", color: "text-primary", bg: "from-primary/10" },
-    { label: t("counter_uptime"), target: 99, suffix: ".99%", prefix: "", color: "text-emerald-500", bg: "from-emerald-500/10" },
-    { label: t("counter_clients"), target: 85, suffix: "+", prefix: "", color: "text-purple-500", bg: "from-purple-500/10" },
+    { label: t("counter_code"), icon: Code2, title: "Modern Teknoloji Stack", color: "text-blue-500", bg: "from-blue-500/10" },
+    { label: t("counter_projects"), icon: Blocks, title: "Proje Odaklı Geliştirme", color: "text-primary", bg: "from-primary/10" },
+    { label: t("counter_uptime"), icon: Server, title: "Yüksek Performans", color: "text-emerald-500", bg: "from-emerald-500/10" },
+    { label: t("counter_clients"), icon: CheckCircle, title: "Uçtan Uca Çözüm", color: "text-purple-500", bg: "from-purple-500/10" },
   ];
 
   return (
@@ -60,9 +27,10 @@ export default function LiveCounter() {
               transition={{ delay: i * 0.1 }}
               className={`relative p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-br ${stat.bg} to-transparent border border-border overflow-hidden group hover:scale-[1.02] transition-transform`}
             >
-              <div className={`text-4xl md:text-5xl font-bold mb-2 ${stat.color} tabular-nums`}>
-                <AnimatedCounter target={stat.target} suffix={stat.suffix} prefix={stat.prefix} />
+              <div className={`mb-4 ${stat.color}`}>
+                <stat.icon className="w-10 h-10" />
               </div>
+              <h3 className="text-xl font-bold mb-2 text-foreground">{stat.title}</h3>
               <p className="text-foreground/60 text-sm font-medium">{stat.label}</p>
               <div className={`absolute -bottom-4 -right-4 w-20 h-20 rounded-full ${stat.bg} blur-2xl opacity-50 group-hover:opacity-100 transition-opacity`} />
             </motion.div>

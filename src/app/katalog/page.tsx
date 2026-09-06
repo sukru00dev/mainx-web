@@ -82,7 +82,7 @@ export default function KatalogPage() {
             <ArrowRight className="w-4 h-4 rotate-180" /> Ana Sayfaya Dön
           </Link>
           <h1 className="text-5xl md:text-7xl font-thin tracking-tight mb-6">
-            Hizmet <span className="font-bold">Kataloğumuz.</span>
+            Yazılım Geliştirme <span className="font-bold">Hizmetleri.</span>
           </h1>
           <p className="text-white/50 max-w-2xl text-lg leading-relaxed">
             MainX Stüdyoları olarak sunduğumuz uçtan uca mühendislik çözümleri, teknoloji stack'lerimiz ve uzmanlık alanlarımız.

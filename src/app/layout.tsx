@@ -14,37 +14,11 @@ import OnboardingWizard from "@/components/OnboardingWizard";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://mainx.com.tr"),
-  title: "MainX Stüdyoları | Yazılım & Teknoloji | Şükrü BAŞ",
-  description:
-    "MainX Stüdyoları — Şükrü BAŞ tarafından kurulan yenilikçi yazılım ve teknoloji Ar-Ge stüdyosu. B2B SaaS, Mobil Uygulama, Yapay Zeka, Blok Zinciri.",
-  keywords: [
-    "yazılım stüdyosu", "web geliştirme", "mobil uygulama", "yapay zeka",
-    "blok zinciri", "SaaS", "Şükrü BAŞ", "MainX", "Şanlıurfa", "Flutter", "Next.js", "TÜBİTAK",
-  ],
-  authors: [{ name: "Şükrü BAŞ", url: "https://mainx.com.tr" }],
-  creator: "Şükrü BAŞ",
-  publisher: "MainX Stüdyoları",
-  openGraph: {
-    type: "website",
-    locale: "tr_TR",
-    alternateLocale: "en_US",
-    url: "https://mainx.com.tr",
-    title: "MainX Stüdyoları | Yazılım & Teknoloji | Şükrü BAŞ",
-    description: "B2B SaaS, Mobil Uygulama, Yapay Zeka ve Blok Zinciri çözümleri üreten teknoloji stüdyosu.",
-    siteName: "MainX Stüdyoları",
-    images: [{ url: "/profile.jpg", width: 1200, height: 630, alt: "MainX Stüdyoları — Şükrü BAŞ" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MainX Stüdyoları | by Şükrü BAŞ",
-    description: "B2B SaaS, Mobil Uygulama, Yapay Zeka ve Blok Zinciri çözümleri.",
-    images: ["/profile.jpg"],
-    creator: "@sukrukodluyor",
-  },
-  robots: { index: true, follow: true },
-};
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata();
+
+import { PersonSchema, OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -61,6 +35,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        <PersonSchema />
+        <OrganizationSchema />
+        <WebSiteSchema />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col bg-background text-foreground antialiased selection:bg-primary selection:text-white transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

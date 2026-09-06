@@ -15,6 +15,14 @@ import TerminalCLI from "@/components/TerminalCLI";
 import CostEstimator from "@/components/CostEstimator";
 import FloatingToC from "@/components/FloatingToC";
 
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "MainX Stüdyoları | Yazılım ve Dijital Ürün Geliştirme",
+  description: "MainX Stüdyoları; web ve SaaS uygulamaları, yapay zeka, mobil uygulamalar, kurumsal yazılım ve modern dijital çözümler geliştirir.",
+  path: "",
+});
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen relative">

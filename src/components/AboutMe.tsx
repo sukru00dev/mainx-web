@@ -35,14 +35,12 @@ export default function AboutMe() {
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,var(--primary)_2px,transparent_2px)] bg-[size:24px_24px]" />
               
               {/* User Photo: Drop your photo named "profile.jpg" into the public folder */}
-              <img 
+              <Image
                 src="/profile.jpg" 
-                alt="Şükrü BAŞ" 
-                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 z-10 opacity-80 group-hover:opacity-100"
-                onError={(e) => {
-                  // Hide broken image icon if image doesn't exist yet
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
+                alt="Şükrü BAŞ MainX Stüdyoları Kurucusu"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 z-10 opacity-80 group-hover:opacity-100"
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-20 pointer-events-none" />

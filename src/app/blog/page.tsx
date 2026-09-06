@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, Clock, Tag } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Blog & Yazılar | MainX Stüdyoları",
-  description:
-    "Şükrü BAŞ tarafından yazılan blok zinciri, yapay zeka, mobil geliştirme ve yazılım mühendisliği üzerine teknik makaleler.",
-};
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
+  title: "Teknoloji ve Yazılım Blogu | MainX",
+  description: "Şükrü BAŞ tarafından yazılan blok zinciri, yapay zeka, mobil geliştirme ve yazılım mühendisliği üzerine teknik makaleler.",
+  path: "/blog",
+});
 
 const posts = [
   {
@@ -87,7 +89,7 @@ export default function BlogPage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-thin tracking-tight text-foreground mb-6">
-            Teknik <span className="font-bold">Perspektifler.</span>
+            Teknoloji ve Yazılım <span className="font-bold">Blogu.</span>
           </h1>
           <p className="text-xl text-foreground/50 max-w-3xl leading-relaxed">
             Blok zinciri mimarisinden yapay zeka ajanlarına, gömülü sistemlerden SaaS tasarımına kadar mühendislik dünyasından derinlemesine analizler.

@@ -44,21 +44,24 @@ export default function SplashScreen() {
   }, []);
 
   // Build arc data once (memoized) to fix react-hooks/purity
-  const { arcsData, ringsData } = useMemo(() => {
+  const { arcs, rings } = useMemo(() => {
     const N = 30;
-    const arcs = Array.from({ length: N }, () => ({
+    const generatedArcs = Array.from({ length: N }, () => ({
       startLat: (Math.random() - 0.5) * 180,
       startLng: (Math.random() - 0.5) * 360,
       endLat: (Math.random() - 0.5) * 180,
       endLng: (Math.random() - 0.5) * 360,
       color: ["#f59e0b", "#3b82f6", "#10b981"][Math.floor(Math.random() * 3)],
     }));
-    const rings = arcs.slice(0, 15).map((a) => ({
+    const generatedRings = generatedArcs.slice(0, 15).map((a) => ({
       lat: a.startLat,
       lng: a.startLng,
+      maxR: Math.random() * 20 + 10,
+      propagationSpeed: (Math.random() - 0.5) * 2 + 1,
+      repeatPeriod: Math.random() * 2000 + 1000,
       color: a.color,
     }));
-    return { arcsData: arcs, ringsData: rings };
+    return { arcs: generatedArcs, rings: generatedRings };
   }, []);
 
   return (
@@ -87,14 +90,14 @@ export default function SplashScreen() {
               backgroundColor="rgba(0,0,0,0)"
               globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
               bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-              arcsData={arcsData}
+              arcsData={arcs}
               arcColor="color"
               arcDashLength={0.5}
               arcDashGap={0.2}
               arcDashAnimateTime={1500}
               arcsTransitionDuration={0}
               arcStroke={1.5}
-              ringsData={ringsData}
+              ringsData={rings}
               ringColor="color"
               ringMaxRadius={4}
               ringPropagationSpeed={3}
