@@ -1,10 +1,11 @@
 import { getPostBySlug, getAllPosts } from "@/lib/mdx";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, SITE_URL } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Image from "next/image";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -35,9 +36,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const { meta, content } = post;
+  const postUrl = `${SITE_URL}/blog/${meta.slug}`;
 
   return (
     <div className="min-h-screen bg-background">
+      <ArticleSchema 
+        title={meta.title}
+        description={meta.description || ""}
+        date={meta.date}
+        url={postUrl}
+        image={meta.image ? `${SITE_URL}${meta.image}` : `${SITE_URL}/profile.jpg`}
+      />
+      <BreadcrumbSchema items={[
+        { name: "Ana Sayfa", url: SITE_URL },
+        { name: "Blog", url: `${SITE_URL}/blog` },
+        { name: meta.title, url: postUrl }
+      ]} />
       {/* Hero Section */}
       <div className="relative py-24 md:py-32 border-b border-border overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10 pointer-events-none" />

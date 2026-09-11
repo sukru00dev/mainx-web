@@ -43,8 +43,7 @@ export default function SplashScreen() {
     };
   }, []);
 
-  // Build arc data once (memoized) to fix react-hooks/purity
-  const { arcs, rings } = useMemo(() => {
+  const [{ arcs, rings }] = useState(() => {
     const N = 30;
     const generatedArcs = Array.from({ length: N }, () => ({
       startLat: (Math.random() - 0.5) * 180,
@@ -62,7 +61,7 @@ export default function SplashScreen() {
       color: a.color,
     }));
     return { arcs: generatedArcs, rings: generatedRings };
-  }, []);
+  });
 
   return (
     <AnimatePresence>

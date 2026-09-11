@@ -13,8 +13,7 @@ export default function Globe() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 600, height: 600 });
 
-  // ✅ useMemo MUST be before any early return — Rules of Hooks
-  const { arcsData, ringsData } = useMemo(() => {
+  const [{ arcsData, ringsData }] = useState(() => {
     const N = 30;
     const arcs = Array.from({ length: N }, () => ({
       startLat: (Math.random() - 0.5) * 180,
@@ -29,7 +28,7 @@ export default function Globe() {
       color: arc.color
     }));
     return { arcsData: arcs, ringsData: rings };
-  }, []); // Computed once, never recalculated
+  });
 
   useEffect(() => {
     setMounted(true);

@@ -19,12 +19,14 @@ const testimonials = [
     image: "https://ui-avatars.com/api/?name=T3+Vakfı&background=E53935&color=fff&size=100"
   },
   {
-    quote: "Göl Lokantası için kurdukları dijital menü ve web altyapısı sayesinde operasyonel yükümüz %40 azaldı. Müşterilerimizin sisteme alışması sadece birkaç saat sürdü.",
+    quote: "Göl Lokantası için kurdukları dijital menü ve web altyapısı sayesinde operasyonel iş yükümüz önemli ölçüde azaldı. Müşterilerimizin sisteme alışması çok hızlı oldu.",
     author: "İşletme Sahibi",
     role: "Göl Lokantası",
     image: "https://ui-avatars.com/api/?name=Gol+Lokantasi&background=43A047&color=fff&size=100"
   }
 ];
+
+import Image from "next/image";
 
 export default function Testimonials() {
   const { t } = useLanguage();
@@ -55,9 +57,11 @@ export default function Testimonials() {
               </p>
               
               <div className="flex items-center gap-4 mt-auto">
-                <img 
+                <Image 
                   src={testimonial.image} 
-                  alt={testimonial.author} 
+                  alt={testimonial.author}
+                  width={56}
+                  height={56} 
                   className="w-14 h-14 rounded-full border-2 border-border"
                 />
                 <div>

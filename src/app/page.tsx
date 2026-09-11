@@ -16,6 +16,7 @@ import CostEstimator from "@/components/CostEstimator";
 import FloatingToC from "@/components/FloatingToC";
 
 import { constructMetadata } from "@/lib/seo";
+import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 
 export const metadata = constructMetadata({
   title: "MainX Stüdyoları | Yazılım ve Dijital Ürün Geliştirme",
@@ -26,6 +27,8 @@ export const metadata = constructMetadata({
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen relative">
+      <OrganizationSchema />
+      <WebSiteSchema />
       <FloatingToC />
       <Hero />
       <LiveCounter />

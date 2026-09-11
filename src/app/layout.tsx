@@ -19,8 +19,6 @@ import { constructMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata();
 
-import { PersonSchema, OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr" suppressHydrationWarning className="scroll-smooth">
@@ -36,9 +34,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
-        <PersonSchema />
-        <OrganizationSchema />
-        <WebSiteSchema />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col bg-background text-foreground antialiased selection:bg-primary selection:text-white transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

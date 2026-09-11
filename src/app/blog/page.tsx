@@ -1,8 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, Clock } from "lucide-react";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, SITE_URL } from "@/lib/seo";
 import { getAllPosts } from "@/lib/mdx";
+import { BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = constructMetadata({
   title: "Teknoloji ve Yazılım Blogu | MainX",
@@ -17,6 +18,10 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <BreadcrumbSchema items={[
+        { name: "Ana Sayfa", url: SITE_URL },
+        { name: "Blog", url: `${SITE_URL}/blog` }
+      ]} />
       {/* Hero */}
       <div className="relative py-32 border-b border-border overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10 pointer-events-none" />

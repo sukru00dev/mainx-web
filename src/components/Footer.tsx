@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-foreground/50 max-w-md leading-relaxed mb-8">
-              Şükrü BAŞ tarafından kurulan, yenilikçi web teknolojileri, mobil uygulamalar, yapay zeka sistemleri ve blok zinciri mimarileri geliştiren Ar-Ge ve mühendislik stüdyosu.
+              <Link href="/sukru-bas" className="hover:text-primary transition-colors font-medium">Şükrü BAŞ</Link> tarafından kurulan, yenilikçi web teknolojileri, mobil uygulamalar, yapay zeka sistemleri ve blok zinciri mimarileri geliştiren Ar-Ge ve mühendislik stüdyosu.
             </p>
             <div className="flex gap-4">
               <a href="https://github.com/sukru00dev" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/40">
-          <p>© {new Date().getFullYear()} MainX Stüdyoları by Şükrü BAŞ. Tüm hakları saklıdır.</p>
+          <p>© {new Date().getFullYear()} MainX Stüdyoları by <Link href="/sukru-bas" className="hover:text-primary transition-colors">Şükrü BAŞ</Link>. Tüm hakları saklıdır.</p>
           
           <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-foreground/5 border border-border cursor-pointer hover:bg-foreground/10 transition-colors">
             <span className="relative flex h-3 w-3">
