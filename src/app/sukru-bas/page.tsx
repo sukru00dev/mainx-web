@@ -10,7 +10,7 @@ export const metadata = constructMetadata({
   title: "Şükrü BAŞ | Yazılım Geliştirici & MainX Stüdyoları",
   description: "Şükrü BAŞ'ın yazılım geliştirme, teknoloji projeleri, akademik çalışmaları ve MainX Stüdyoları ile ilgili kişisel profili.",
   path: "/sukru-bas",
-  image: "/profile.jpg",
+  image: "/sukru-bas-yazilim-uzmani.jpg",
 });
 
 export default function SukruBasProfile() {
@@ -28,7 +28,7 @@ export default function SukruBasProfile() {
         <header className="flex flex-col md:flex-row gap-8 items-center md:items-start mb-16 border-b border-border pb-12">
           <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-primary/20 shrink-0">
             <Image 
-              src="/profile.jpg" 
+              src="/sukru-bas-yazilim-uzmani.jpg" 
               alt="Şükrü BAŞ" 
               fill 
               className="object-cover"

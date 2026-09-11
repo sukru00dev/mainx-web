@@ -9,7 +9,7 @@ export function PersonSchema() {
       "@id": `${SITE_URL}/sukru-bas#person`,
       name: "Şükrü BAŞ",
       url: `${SITE_URL}/sukru-bas`,
-      image: `${SITE_URL}/profile.jpg`,
+      image: `${SITE_URL}/sukru-bas-yazilim-uzmani.jpg`,
       jobTitle: "Yazılım Geliştirici",
       worksFor: {
         "@type": "Organization",

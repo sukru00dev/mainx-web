@@ -3,7 +3,7 @@
 export function constructMetadata({
   title = "MainX Stüdyoları | Yazılım, Yapay Zeka ve Dijital Çözümler",
   description = "MainX Stüdyoları; web ve SaaS uygulamaları, yapay zeka, mobil uygulamalar, kurumsal yazılım ve modern dijital çözümler geliştirir.",
-  image = "/profile.jpg",
+  image = "/sukru-bas-yazilim-uzmani.jpg",
   path = "",
   noIndex = false,
 }: {

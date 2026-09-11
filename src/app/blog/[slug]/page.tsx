@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return constructMetadata({
     title: `${post.meta.title} | MainX Blog`,
     description: post.meta.description,
-    image: post.meta.image || "/profile.jpg",
+    image: post.meta.image || "/sukru-bas-yazilim-uzmani.jpg",
     path: `/blog/${post.meta.slug}`,
   });
 }
@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         description={meta.description || ""}
         date={meta.date}
         url={postUrl}
-        image={meta.image ? `${SITE_URL}${meta.image}` : `${SITE_URL}/profile.jpg`}
+        image={meta.image ? `${SITE_URL}${meta.image}` : `${SITE_URL}/sukru-bas-yazilim-uzmani.jpg`}
       />
       <BreadcrumbSchema items={[
         { name: "Ana Sayfa", url: SITE_URL },
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <div className="flex items-center gap-6 text-foreground/50 text-sm">
             <div className="flex items-center gap-2">
-              <Image src="/profile.jpg" alt="Şükrü BAŞ" width={32} height={32} className="rounded-full border border-border" />
+              <Image src="/sukru-bas-yazilim-uzmani.jpg" alt="Şükrü BAŞ" width={32} height={32} className="rounded-full border border-border" />
               <span className="font-semibold text-foreground/80">Şükrü BAŞ</span>
             </div>
             <div className="flex items-center gap-2">

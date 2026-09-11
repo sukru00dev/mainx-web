@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return constructMetadata({
     title: `${post.meta.title} | MainX Vaka Analizi`,
     description: post.meta.description,
-    image: post.meta.image || "/profile.jpg",
+    image: post.meta.image || "/sukru-bas-yazilim-uzmani.jpg",
     path: `/projeler/${post.meta.slug}`,
   });
 }
@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         description={meta.description || ""}
         date={meta.date}
         url={postUrl}
-        image={meta.image ? `${SITE_URL}${meta.image}` : `${SITE_URL}/profile.jpg`}
+        image={meta.image ? `${SITE_URL}${meta.image}` : `${SITE_URL}/sukru-bas-yazilim-uzmani.jpg`}
       />
       <BreadcrumbSchema items={[
         { name: "Ana Sayfa", url: SITE_URL },

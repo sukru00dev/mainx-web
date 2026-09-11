@@ -37,7 +37,7 @@ export default function AboutMe() {
               
               {/* User Photo: Drop your photo named "profile.jpg" into the public folder */}
               <Image
-                src="/profile.jpg" 
+                src="/sukru-bas-yazilim-uzmani.jpg" 
                 alt="Şükrü BAŞ MainX Stüdyoları Kurucusu"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
