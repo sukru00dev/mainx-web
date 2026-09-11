@@ -28,7 +28,7 @@ export default function Contact() {
 
   const handleOptionClick = (optionText: string) => {
     if (optionText.includes("hello.mainx@gmail.com")) {
-      window.location.href = "mailto:hello.mainx@gmail.com";
+      setTimeout(() => { window.location.href = "mailto:hello.mainx@gmail.com"; }, 0);
       return;
     }
 
@@ -40,7 +40,7 @@ export default function Contact() {
     });
 
     // Add user message
-    const userMsgId = Date.now().toString();
+    const userMsgId = crypto.randomUUID();
     setMessages(prev => [...prev, { id: userMsgId, sender: "user", text: optionText }]);
     
     setIsTyping(true);
@@ -52,21 +52,21 @@ export default function Contact() {
 
       if (optionText === t("contact_q1")) {
         botResponse = {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           sender: "bot",
           text: "Harika! Projenizin ana odağı nedir?",
           options: ["Mobil Uygulama (Flutter)", "SaaS / Web Platformu", "Yapay Zeka (AI) Entegrasyonu", "Blok Zinciri (Web3)"]
         };
       } else if (optionText === t("contact_q2")) {
         botResponse = {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           sender: "bot",
           text: "Uzmanlık alanlarımız Blok Zinciri, AI ve Sistem Mimarisi. Hangi konuda danışmanlık arıyorsunuz?",
           options: ["Sistem Ölçeklendirme", "Güvenlik & Ar-Ge", "Kod İncelemesi (Code Review)"]
         };
       } else if (optionText === t("contact_q3")) {
         botResponse = {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           sender: "bot",
           text: "Merhaba! 👋 Tanıştığımıza çok sevindim. Bize doğrudan mail atarak kahve eşliğinde tanışma ayarlayabilirsiniz.",
           options: ["hello.mainx@gmail.com'a Mail At"]
@@ -75,14 +75,14 @@ export default function Contact() {
       } else if (["Mobil Uygulama (Flutter)", "SaaS / Web Platformu", "Yapay Zeka (AI) Entegrasyonu", "Blok Zinciri (Web3)"].includes(optionText) || 
                  ["Sistem Ölçeklendirme", "Güvenlik & Ar-Ge", "Kod İncelemesi (Code Review)"].includes(optionText)) {
         botResponse = {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           sender: "bot",
           text: "Mükemmel seçim! Son olarak bize projenizin bütçe aralığını belirtebilir misiniz?",
           options: ["$1K - $5K", "$5K - $10K", "$10K+ (Enterprise)"]
         };
       } else {
         botResponse = {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           sender: "bot",
           text: "Bilgilerinizi aldık. Projeniz tam da uzmanlık alanımıza giriyor! Tüm detayları konuşmak için hemen randevu oluşturalım.",
           options: []
@@ -132,7 +132,7 @@ export default function Contact() {
                     <MessageCircle className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-foreground group-hover/item:text-[#25D366] transition-colors">WhatsApp'tan Yazın</p>
+                    <p className="text-sm font-bold text-foreground group-hover/item:text-[#25D366] transition-colors">WhatsApp&apos;tan Yazın</p>
                     <p className="text-xs text-foreground/50">+90 545 882 2670</p>
                   </div>
                 </a>

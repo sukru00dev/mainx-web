@@ -10,7 +10,6 @@ import Globe from "./Globe";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [mounted, setMounted] = useState(false);
   
   // Parallax Setup
   const mouseX = useMotionValue(0);
@@ -29,7 +28,6 @@ export default function Hero() {
   const fgY = useTransform(smoothY, [-0.5, 0.5], [-30, 30]);
 
   useEffect(() => {
-    setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
       const x = e.clientX / innerWidth - 0.5;

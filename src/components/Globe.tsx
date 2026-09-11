@@ -9,6 +9,7 @@ const GlobeT = dynamic(() => import("react-globe.gl"), { ssr: false });
 export default function Globe() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const globeEl = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 600, height: 600 });
@@ -31,7 +32,7 @@ export default function Globe() {
   });
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
     const handleResize = () => {
       if (containerRef.current) {
         const { clientWidth } = containerRef.current;

@@ -1,0 +1,50 @@
+---
+title: "AI Agent Factory: Otonom Yapay Zeka İş Akışları"
+description: "Birden fazla LLM modelinin aynı anda çalışıp, şirket içi iş süreçlerini dışarıya veri sızdırmadan otonom şekilde yönettiği yapay zeka otomasyon altyapısı."
+date: "2024-05-20"
+readTime: "8 dk"
+---
+
+# AI Agent Factory: Otonom Yapay Zeka İş Akışları
+
+## Genel Bakış
+Otonom yapay zeka ajanları ve iş akışı orkestrasyonunu sağlayan uçtan uca bir çözümdür. Sistem, n8n kullanarak otomasyon senaryoları tasarlar ve verileri tamamen şirket içinde işleyebilmek için Oracle Cloud ARM sunucularında yerel (local) LLM'ler (Ollama) koşturur.
+
+## Problem
+Modern şirketlerin yapay zeka yeteneklerinden yararlanmak istemesi, ancak şirket içi özel verilerin genel ağlar (OpenAI, Anthropic gibi) üzerinden dışarıya sızdırılmasının (Data Privacy) getirdiği ciddi güvenlik endişeleri büyük bir problem oluşturuyordu. Bu sebeple iş akışlarını dışarıya bağımlı olmadan, güvenli ve maliyet-etkin bir şekilde otomatize edecek otonom ajanlara ihtiyaç vardı.
+
+## Çözüm
+Oracle Cloud'un sunduğu güçlü ARM tabanlı sunucularda Docker container mimarisi ile n8n (iş akışı yöneticisi) ve Ollama (LLM model çalıştırıcısı) ayağa kaldırıldı. Ollama üzerinde açık kaynaklı ve donanıma göre optimize edilmiş modeller (qwen2.5 vb.) çalıştırılarak "Private AI" altyapısı inşa edildi.
+
+## Şükrü BAŞ'ın Rolü
+Bu sistemin tasarlanması, bulut (Oracle ARM) sunucularının provizyonu, Docker üzerinden konteynerleştirme işlemlerinin yapılması, LangChain benzeri RAG (Retrieval-Augmented Generation) senaryolarının n8n içinde webhook ve nodelar aracılığıyla kurgulanması görevlerini üstlendim. (DevOps & AI Engineer)
+
+## Teknolojiler ve Kullanılan Teknolojiler
+- **İş Akışı (Workflow):** n8n
+- **Yapay Zeka (AI):** Ollama, Qwen2.5, Local LLMs
+- **Altyapı (Infrastructure):** Docker, Oracle Cloud ARM, Linux (Ubuntu)
+- **Yaklaşım:** RAG (Retrieval-Augmented Generation), Agentic Workflows
+
+## Mimari
+Sistem şu bileşenlerden oluşur:
+- **Infrastructure:** Oracle ARM sunucusunda Ubuntu OS ve Docker Swarm.
+- **Backend / Communication:** n8n, API Endpoint (Webhook) görevini üstlenir. Gelen istekler (e-posta, slack mesajı vs.) n8n tarafından yakalanır.
+- **AI Engine:** İstekler, Prompt Engineering kurallarından geçerek Docker içinde çalışan yerel Ollama API'sine iletilir. Model yanıtı tekrar n8n aracılığıyla sisteme döndürülür.
+
+## Teknik Zorluklar
+ARM mimarisi üzerinde LLM modellerinin performanslı çalıştırılması en temel teknik sorundu. Ayrıca, sınırlı RAM kapasitesi olan sunucularda birden fazla otonom ajanın (agent) aynı anda LLM kuyruğuna (queue) istek göndermesi sistemin kilitlenmesine neden olabiliyordu.
+
+## Çözüm Yaklaşımı
+RAM yönetimi için n8n üzerinde request throttling (istek hız sınırlayıcı) uygulandı. Ollama modellerinin quantize edilmiş (örneğin 4-bit) sürümleri tercih edilerek bellek tüketimi düşürüldü, çıkarım (inference) hızı tatmin edici seviyelere çekildi.
+
+## Sonuç
+Oluşturulan "AI Agent Factory" sayesinde şirket içi tekrarlayan süreçler (veri sınıflandırma, otomatik rapor çekme) %100 gizlilik prensibiyle otonom hale getirildi ve bulut API maliyetlerinden tasarruf sağlandı.
+
+## Öğrenilenler
+Açık kaynak LLM ekosisteminin olgunlaştığı ve doğru optimizasyon (quantization) teknikleriyle, devasa bütçelere ihtiyaç duymadan da özel (private) ve işlevsel yapay zeka ajanlarının hayata geçirilebileceği tecrübe edildi.
+
+## Related Projects
+- [Sınav Yönetim Sistemi](/projeler/sinav-yonetim-sistemi)
+
+## Related Articles
+- [n8n ile AI Agent Architecture: Temel Tasarım Yaklaşımı](/blog/n8n-ai-agents)

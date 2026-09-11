@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { constructMetadata } from "@/lib/seo";
 import { PersonSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import Image from "next/image";
@@ -52,16 +53,16 @@ export default function SukruBasProfile() {
           </div>
         </header>
 
-        {/* Work Areas */}
+        {/* Work Areas & Tech Stack */}
         <section className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Code className="text-primary" /> Çalışma Alanları</h3>
+          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Code className="text-primary" /> Teknik Uzmanlıklar</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Software Development</div>
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Web Development</div>
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">AI Integration</div>
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">SaaS Architecture</div>
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Mobile Development</div>
-            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Cloud Infrastructure</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Software Architecture</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">React & Next.js</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Flutter Mobile App</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">AI Agent Workflows</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Hyperledger Fabric</div>
+            <div className="p-4 rounded-xl bg-foreground/5 border border-border">Cloud & DevOps</div>
           </div>
         </section>
 
@@ -69,39 +70,58 @@ export default function SukruBasProfile() {
         <section className="mb-12">
           <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><BookOpen className="text-primary" /> Eğitim ve Araştırma</h3>
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-foreground/5 border border-border">
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-border hover:border-primary/30 transition-colors">
               <h4 className="text-xl font-medium mb-2">Harran Üniversitesi</h4>
-              <p className="text-foreground/60 mb-2">Bilgisayar / Yazılım Mühendisliği Alanı</p>
-              <p className="text-sm text-foreground/80">Akademik çalışmalar ve TÜBİTAK 2209-A projesi kapsamında araştırma ve geliştirme süreçlerinde aktif rol alma.</p>
+              <p className="text-foreground/60 mb-3">Bilgisayar Mühendisliği Öğrencisi</p>
+              <p className="text-sm text-foreground/80 leading-relaxed mb-4">
+                Akademik çalışmalarımı özellikle dağıtık sistemler, veri gizliliği ve blok zinciri mimarisi üzerine yoğunlaştırdım. 
+                Bu kapsamda yürüttüğüm <Link href="/projeler/tubitak-2209-a" className="text-primary hover:underline">TÜBİTAK 2209-A Blok Zinciri Diploma Doğrulama Sistemi</Link> projesi
+                başarıyla onaylandı ve literatüre kazandırıldı.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Teaching & Communities */}
+        {/* Experience & Activities */}
         <section className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Award className="text-primary" /> Eğitmenlik & Topluluk</h3>
+          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Award className="text-primary" /> Deneyim & Faaliyetler</h3>
           <div className="space-y-4 text-foreground/80 leading-relaxed">
-            <ul className="list-disc list-inside space-y-2">
-              <li>Teknoloji Eğitmenliği: Modern yazılım dilleri ve teknolojileri üzerine eğitimler.</li>
-              <li>Siber Vatan: Siber güvenlik ve yazılım ekosisteminde aktif katılım.</li>
-              <li>T3 Vakfı: Teknoloji geliştirme ve mentorluk faaliyetleri.</li>
-              <li>Açık Kaynak: Topluluk destekli geliştirme süreçlerine katkı.</li>
+            <ul className="list-disc list-inside space-y-3">
+              <li>
+                <strong>MainX Stüdyoları:</strong> Kurucu ve yazılım mimarı olarak kurumsal firmalara özel SaaS ve otonom sistemler (Bkz: <Link href="/projeler/ai-agent-factory" className="text-primary hover:underline">AI Agent Factory</Link>) geliştiriyorum.
+              </li>
+              <li>
+                <strong>Mobil Geliştirme:</strong> Çevrimdışı çalışabilen mimariler tasarlıyorum. Google Play'de yayınlanan <Link href="/projeler/param-cepte" className="text-primary hover:underline">Param Cepte</Link> projesini Offline-First mimarisiyle sıfırdan geliştirdim.
+              </li>
+              <li>
+                <strong>Teknoloji Eğitmenliği:</strong> Deneyim T3 Vakfı bünyesinde teknoloji mentorluğu yapıyor ve "Siber Vatan" gibi programlarda siber güvenlik ve yazılım ekosistemine aktif katılım sağlıyorum.
+              </li>
             </ul>
           </div>
         </section>
 
-        {/* Projects */}
+        {/* Selected Publications */}
         <section className="mb-12">
-          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Terminal className="text-primary" /> Projeler</h3>
+          <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2"><Terminal className="text-primary" /> Yazılar ve Yayınlar</h3>
           <p className="mb-6 text-foreground/80">
-            Geliştirdiğim projeler ve MainX Stüdyoları bünyesindeki çalışmaları inceleyebilirsiniz.
+            Öğrendiklerimi ve mimari deneyimlerimi paylaştığım teknik makalelere <Link href="/blog" className="text-primary hover:underline">Blog</Link> üzerinden ulaşabilirsiniz.
           </p>
-          <div className="flex gap-4">
-            <Link href="/projeler" className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-              Tüm Projeler
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link href="/blog/n8n-ai-agents" className="p-4 rounded-xl bg-foreground/5 border border-border hover:border-primary/50 transition-colors">
+              <span className="text-sm text-foreground/50 mb-1 block">Yapay Zeka Mimari</span>
+              <span className="font-semibold text-foreground hover:text-primary">n8n ile AI Agent Architecture</span>
             </Link>
-            <Link href="/" className="px-6 py-3 rounded-full bg-foreground/5 border border-border font-semibold hover:bg-foreground/10 transition-colors">
-              MainX Stüdyoları
+            <Link href="/blog/flutter-offline-first" className="p-4 rounded-xl bg-foreground/5 border border-border hover:border-primary/50 transition-colors">
+              <span className="text-sm text-foreground/50 mb-1 block">Mobil Geliştirme</span>
+              <span className="font-semibold text-foreground hover:text-primary">Flutter'da Offline-First Yaklaşımı</span>
+            </Link>
+            <Link href="/blog/tubitak-2209" className="p-4 rounded-xl bg-foreground/5 border border-border hover:border-primary/50 transition-colors">
+              <span className="text-sm text-foreground/50 mb-1 block">Araştırma Raporu</span>
+              <span className="font-semibold text-foreground hover:text-primary">TÜBİTAK 2209-A Başvuru Deneyimi</span>
+            </Link>
+            <Link href="/blog/blockchain-giris" className="p-4 rounded-xl bg-foreground/5 border border-border hover:border-primary/50 transition-colors">
+              <span className="text-sm text-foreground/50 mb-1 block">Dağıtık Sistemler</span>
+              <span className="font-semibold text-foreground hover:text-primary">Blok Zincirinin Temelleri</span>
             </Link>
           </div>
         </section>

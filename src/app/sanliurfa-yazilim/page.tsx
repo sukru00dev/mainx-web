@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 ﻿import { constructMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowLeft, MapPin, Code, Smartphone, Cloud, Bot, Briefcase } from 'lucide-react';

@@ -1,18 +1,86 @@
-﻿---
-title: "n8n ile Otonom Yapay Zeka Ajanları Tasarlamak"
-description: "Kendi sunucunuzda (Oracle ARM / Self-Hosted) çalışan, şirket içi süreçlerinizi otonom olarak yöneten ve tam gizlilik sunan AI ajan akışlarının n8n + Ollama kombinasyonu ile nasıl kurulduğunu inceliyoruz."
-tags: ["AI", "n8n", "Ollama", "DevOps"]
-readTime: "10 dk"
+---
+title: "n8n ile AI Agent Architecture: Temel Tasarım Yaklaşımı"
+description: "Oracle ARM tabanlı sunucularda Docker üzerinden n8n ve Ollama kullanarak, %100 gizlilik odaklı (Private AI) otonom yapay zeka ajanları geliştirmenin teknik detayları ve mimari tasarımı."
+tags: ["AI", "n8n", "Ollama", "DevOps", "Architecture"]
+readTime: "12 dk"
 date: "2024-03-22"
-featured: false
+featured: true
 ---
 
-# Otonom Yapay Zeka Ajanları (AI Agents)
+# n8n ile AI Agent Architecture: Temel Tasarım Yaklaşımı
 
-Büyük dil modelleri (LLM) artık sadece sohbet etmekle kalmıyor, dış dünyayla etkileşime girip görevleri yerine getirebilen **Ajanlara** (Agents) dönüşüyorlar. 
+Büyük dil modelleri (LLM) günümüzde sadece pasif metin üreteçleri olmaktan çıkıp, dış sistemlerle etkileşime giren (API call, veritabanı okuma/yazma, webhook tetikleme) aktif **Ajanlara** (Agents) dönüşüyorlar. Bu makalede, bulut API maliyetlerinden kaçınmak ve tam veri gizliliği (Data Privacy) sağlamak için **n8n** ve **Ollama** kullanarak kendi sunucumuzda (Self-Hosted) uçtan uca bir AI Agent altyapısını nasıl kurduğumuzu inceleyeceğiz.
 
-## n8n ve Ollama
+## Neden Local LLM ve n8n?
 
-**n8n**, otomasyon süreçlerini görsel bir şekilde tasarlamanızı sağlayan açık kaynaklı (fair-code) bir araçtır. **Ollama** ise açık kaynaklı LLM'leri (Llama 3, Mistral vb.) kendi donanımınızda çalıştırmanızı sağlar.
+Şirket içi özel verilerin (finansal tablolar, müşteri bilgileri) public API'lere (OpenAI, Anthropic) gönderilmesi ciddi KVKK ve GDPR riskleri taşır. 
+- **Ollama:** Açık kaynaklı modelleri (Llama 3, Qwen 2.5 vb.) yerel donanımda (CPU/GPU) optimize edilmiş (Quantized) şekilde çalıştırmamızı sağlayan bir LLM motorudur.
+- **n8n:** Olay bazlı (event-driven) iş akışları tasarlamamızı sağlayan Node.js tabanlı açık kaynaklı bir Workflow Automation aracıdır. LangChain'in node tabanlı görsel bir muadili gibi çalışabilir.
 
-Bu iki aracı birleştirdiğinizde, verilerinizin dışarı çıkmadığı (tam gizlilik), mailleri okuyabilen, API istekleri yapabilen ve veri tabanlarını güncelleyebilen tamamen size ait bir sanal çalışan (Agent) inşa edebilirsiniz.
+Bu iki yapıyı Docker container'ları içerisinde Oracle Cloud ARM sunucularında birleştirdiğimizde, otonom ve ücretsiz bir "Private AI" altyapısı elde ederiz.
+
+## Mimari Tasarım (Architecture)
+
+Sistem üç temel katmandan oluşur:
+1. **Trigger (Tetikleyici) Katmanı:** n8n üzerindeki Webhook, Email Listener veya CRON node'ları.
+2. **Orchestration Katmanı (n8n):** Gelen veriyi ayrıştıran, LLM'in kullanabileceği araçları (Tools) tanımlayan ve Agent logic'ini (ReAct - Reason + Act) işleten katman.
+3. **Inference Katmanı (Ollama):** n8n'den gelen promptları işleyen ve mantıksal kararları veren model (Örn: `qwen2.5:7b`).
+
+### Docker Compose Yapılandırması
+
+Sistemi ayağa kaldırmak için gereken temel `docker-compose.yml` örneği:
+
+```yaml
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=n8n.sirketiniz.com
+      - WEBHOOK_URL=https://n8n.sirketiniz.com/
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  n8n_data:
+  ollama_data:
+```
+
+## Agent İş Akışı (ReAct Pattern)
+
+Bir AI ajanı temel olarak **ReAct (Reasoning and Acting)** döngüsüyle çalışır. n8n üzerinde bir "Agent Node" oluşturduğumuzda şu adımlar gerçekleşir:
+
+1. **Gözlem (Observation):** Agent, kendisine verilen girdiyi (örneğin bir destek maili) inceler.
+2. **Düşünce (Thought):** "Bu kullanıcının sipariş durumunu veritabanından sorgulamalıyım." kararına varır.
+3. **Eylem (Action):** n8n'e önceden tanımlanmış olan "PostgreSQL Tool"unu çağırır ve sorguyu çalıştırır.
+4. **Yanıt (Response):** Veritabanından gelen sonuca göre nihai e-postayı oluşturur ve "Gmail Node" üzerinden gönderir.
+
+## Performans Optimizasyonu ve Teknik Zorluklar
+
+ARM tabanlı sunucularda (özellikle GPU olmayan ortamlarda) LLM çalıştırmak performans darboğazlarına neden olabilir.
+- **Quantization:** Modellerin 4-bit versiyonlarını (Q4_K_M) kullanarak RAM tüketimini 5-6 GB seviyelerine düşürdük.
+- **Request Throttling:** n8n üzerinde aynı anda maksimum 2 agent process'in çalışmasına izin veren bir Rate Limit kuyruğu oluşturduk. Böylece OOM (Out of Memory) çökmelerinin önüne geçtik.
+
+## Sonuç
+
+Doğru yapılandırılmış bir n8n ve Ollama mimarisi ile şirket içi operasyonlarda dışa bağımlı olmayan, sıfır API maliyetli ve tam gizlilik sunan otonom ajanlar oluşturmak mümkündür.
+
+---
+
+### Related Projects
+- [AI Agent Factory: Otonom Yapay Zeka İş Akışları](/projeler/ai-agent-factory)
+
+### Related Articles
+- [Linux'ta Sunucu Optimizasyonu ve Docker Kullanımı](/blog/pic-assembly) (Yakında)

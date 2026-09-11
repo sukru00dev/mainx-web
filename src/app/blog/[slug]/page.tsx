@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-4xl relative z-10">
           <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10">
-            <ArrowLeft className="w-4 h-4" /> Blog'a Dön
+            <ArrowLeft className="w-4 h-4" /> Blog&apos;a Dön
           </Link>
           
           <div className="flex flex-wrap items-center gap-4 text-sm font-semibold text-primary/80 mb-6">

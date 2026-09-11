@@ -1,15 +1,37 @@
-﻿---
+---
 title: "TÜBİTAK 2209-A: Akademik Araştırma Sürecinde Öğrendiklerim"
-description: "Bir üniversite öğrencisi olarak TÜBİTAK 2209-A programına başvurmak, proje yürütmek ve akademik dünyada kendine yer bulmak üzerine deneyimlerim."
-tags: ["TÜBİTAK", "Akademi", "Ar-Ge"]
-readTime: "6 dk"
+description: "Bir üniversite öğrencisi olarak TÜBİTAK 2209-A programına başvurmak, blok zinciri tabanlı Ar-Ge projesi yürütmek ve akademik dünyada kendine yer bulmak üzerine teknik deneyimlerim."
+tags: ["TÜBİTAK", "Akademi", "Ar-Ge", "Blockchain"]
+readTime: "8 dk"
 date: "2024-05-18"
 featured: false
 ---
 
-# TÜBİTAK 2209-A Proje Süreci
+# TÜBİTAK 2209-A Proje Süreci ve Ar-Ge Deneyimi
 
-TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı, lisans öğrencilerine proje kültürü aşılamak için mükemmel bir fırsattır.
+TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı, lisans öğrencilerine proje kültürü aşılamak ve literatüre katkı sağlamak için mükemmel bir fırsattır. Bu yazıda, "Blok Zinciri Tabanlı Diploma Doğrulama Sistemi" projemizin kabul sürecinden çıktılarına kadar olan teknik araştırma aşamalarını paylaşacağım.
 
-## Araştırma Sorusu Bulmak
-İyi bir projenin temeli, iyi tanımlanmış ve gerçek hayatta karşılığı olan bir problem bulmaktan geçer. Literatür taraması yapmak, problemin sınırlarını çizer.
+## Araştırma Sorusu ve Literatür Taraması
+İyi bir Ar-Ge projesinin temeli, iyi tanımlanmış ve gerçek hayatta karşılığı olan bir probleme çözüm getirmekten geçer. Projemizde temel problem, merkezi veritabanlarında tutulan akademik belgelerin siber saldırılara açık olması ve public blok zincirlerinin de KVKK ihlallerine yol açmasıydı. Literatür taramamızda (Google Scholar, IEEE Xplore) bu sorunu çözmek için kurumsal blok zinciri (Permissioned Blockchain) mimarilerinin kullanılması gerektiğini tespit ettik.
+
+## Teknik Metodoloji: Neden Hyperledger Fabric?
+Projede Ethereum gibi açık (public) blok zincirleri yerine **Hyperledger Fabric** tercih edildi. Bunun bilimsel nedenleri:
+1. **Gizlilik:** Öğrenci verilerinin herkes tarafından görülmesini engellemek için Channel ve Private Data Collection özellikleri.
+2. **Performans:** Proof of Work (PoW) gibi enerji tüketen ve yavaş olan konsensüs mekanizmaları yerine, doğrudan node'lar arası onaylama (Endorsement Policy) sistemine sahip olması.
+3. **Akıllı Sözleşme Dili:** Solidity yerine Go dili (Golang) ile daha esnek Chaincode geliştirilebilmesi.
+
+## Proje Sürecinde Teknik Çıktılar ve Zorluklar
+Araştırmanın geliştirme sürecinde, akademik hipotezleri gerçek koda dönüştürürken ciddi teknik zorluklarla karşılaştık:
+- Node'lar (Peer ve Orderer) arası güvenli iletişimi sağlamak için TLS sertifikalarının (CA) lokal ortamda yönetilmesi.
+- React.js istemcisinin Hyperledger SDK ile haberleşmesini sağlayacak bir ara katman (Gateway API) yazılması.
+
+## Sonuç ve Gelecek Çalışmalar
+Projemiz başarıyla TÜBİTAK tarafından onaylanmış ve fonlanmıştır. Bu süreç, sadece kod yazmayı değil, bilimsel metodoloji oluşturmayı, rapor yazmayı ve akademik literatürü takip etmeyi de öğretmiştir.
+
+---
+
+### Related Projects
+- [Blok Zinciri Diploma Doğrulama Sistemi (Case Study)](/projeler/tubitak-2209-a)
+
+### Related Articles
+- [Blockchain Giriş: Temel Kavramlar ve Mimari](/blog/blockchain-giris)

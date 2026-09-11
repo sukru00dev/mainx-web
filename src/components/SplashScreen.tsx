@@ -8,25 +8,20 @@ import { useLanguage } from "@/context/LanguageContext";
 const GlobeT = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export default function SplashScreen() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        if (sessionStorage.getItem("mainx_splash_seen")) return false;
+      } catch (e) {}
+    }
+    return true; // Default to showing on first load or server
+  });
   const [step, setStep] = useState(0); // 0=connecting, 1=ready, 2=done
   const { t } = useLanguage();
 
   useEffect(() => {
-    let isFirstTime = true;
-    try {
-      const seen = sessionStorage.getItem("mainx_splash_seen");
-      if (seen) isFirstTime = false;
-    } catch (e) {
-      // Ignore sessionStorage errors in strict incognito mode
-    }
+    if (!show) return;
 
-    if (!isFirstTime) {
-      setShow(false);
-      return;
-    }
-
-    setShow(true);
     const t1 = setTimeout(() => setStep(1), 2500);
     const t2 = setTimeout(() => setStep(2), 3800);
     const t3 = setTimeout(() => {

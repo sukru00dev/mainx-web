@@ -1,0 +1,47 @@
+---
+title: "Blok Zinciri Diploma Doğrulama Sistemi"
+description: "TÜBİTAK 2209-A projesi kapsamında akademik belgeleri doğrulamak için geliştirilen, Hyperledger Fabric tabanlı gizlilik odaklı DApp."
+date: "2024-01-10"
+readTime: "7 dk"
+---
+
+# Blok Zinciri Diploma Doğrulama Sistemi
+
+## Genel Bakış
+TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı kapsamında geliştirilmiş bir akademik belge doğrulama sistemidir. Bu sistem, diplomaların ve sertifikaların sahteciliğini önlemek amacıyla kurumsal (permissioned) bir blok zinciri ağı üzerinde çalışacak şekilde tasarlanmıştır.
+
+## Problem
+Mevcut belge doğrulama sistemlerinde diplomalar genelde merkezi veritabanlarında saklanır. Bu durum hem "Single Point of Failure" (tek noktadan hata) riski oluşturur hem de sahtecilik girişimlerine karşı zayıftır. Öte yandan, verilerin herkesin görebileceği açık (public) blok zincirlerine yüklenmesi KVKK ve GDPR gibi gizlilik ihlallerine neden olur.
+
+## Çözüm
+Bu ikilemi çözmek için Hyperledger Fabric kullanılarak hibrit (Permissioned) bir blok zinciri mimarisi inşa edildi. Bu sayede sadece yetkili kurumların (üniversiteler, bakanlıklar) konsensüs mekanizmasına dahil olabildiği, öğrencilerin diploma verilerinin ise güvenli ve şifreli bir şekilde saklandığı bir DApp (Merkeziyetsiz Uygulama) geliştirildi.
+
+## Şükrü BAŞ'ın Rolü
+Projenin yürütücüsü ve Blockchain Developer'ı olarak yer aldım. Hyperledger Fabric ağının kurulması, Go dili ile Smart Contract (Chaincode) yazılımı ve React.js kullanılarak kullanıcı arayüzünün ağ ile entegrasyonu tarafımdan gerçekleştirildi.
+
+## Teknolojiler ve Kullanılan Teknolojiler
+- **Blockchain:** Hyperledger Fabric
+- **Smart Contract:** Go (Golang)
+- **Frontend:** React.js
+- **Araştırma Tipi:** Ar-Ge, TÜBİTAK 2209-A
+
+## Mimari
+- **Backend (Chaincode):** Go diliyle yazılmış akıllı sözleşmeler, diploma oluşturma (mint) ve doğrulama (verify) iş mantığını barındırır.
+- **Ledger:** Kurumlar (Peer'lar) arasında senkronize edilen CouchDB tabanlı State Database.
+- **Frontend / API:** React.js tabanlı arayüz, Hyperledger SDK aracılığıyla blockchain ağına bağlanarak doğrulama sorgularını gerçekleştirir.
+
+## Teknik Zorluklar
+Hyperledger Fabric yapısının gerektirdiği sertifika otoriteleri (CA) ve peer iletişimlerinin lokal ortamda ayağa kaldırılması ve Docker konteynerleri arası güvenli iletişimin (TLS) sağlanması, sürecin başındaki en büyük DevOps engeliydi.
+
+## Çözüm Yaklaşımı
+Network kurulumu bash betikleriyle otomatikleştirildi. Test ortamında Docker Compose kullanılarak Peer, Orderer ve CA düğümlerinin sorunsuz bir şekilde ayağa kalkması ve birbirlerini keşfetmesi sağlandı.
+
+## Sonuç
+Proje başarılı bir şekilde tamamlanarak TÜBİTAK tarafından onaylandı. Akademik diplomaların, saniyeler içinde doğrulanabilmesine olanak tanıyan, güvenli ve değiştirilemez bir Ar-Ge prototipi literatüre kazandırıldı.
+
+## Öğrenilenler
+Açık blok zincirleri (Ethereum vb.) ile kurumsal blok zincirleri (Hyperledger) arasındaki mimari farklılıklar, kurumsal yapılarda gizliliğin (Channel mantığı) nasıl inşa edildiği ve Go dilinin blok zinciri ekosistemindeki etkinliği derinlemesine öğrenildi.
+
+## Related Articles
+- [TÜBİTAK 2209-A: Akademik Araştırma Sürecinde Öğrendiklerim](/blog/tubitak-2209)
+- [Blockchain Giriş: Temel Kavramlar ve Mimari](/blog/blockchain-giris)

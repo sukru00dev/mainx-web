@@ -140,7 +140,7 @@ Lütfen benimle iletişime geçin.
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Talebiniz Alındı!</h3>
                 <p className="text-foreground/60 max-w-sm">
-                  Proje detaylarınızı inceleyip en kısa sürede sizinle iletişime geçeceğiz. MainX Stüdyoları'nı seçtiğiniz için teşekkürler.
+                  Proje detaylarınızı inceleyip en kısa sürede sizinle iletişime geçeceğiz. MainX Stüdyoları&apos;nı seçtiğiniz için teşekkürler.
                 </p>
               </motion.div>
             ) : (

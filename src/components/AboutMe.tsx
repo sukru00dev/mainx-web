@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 import { Terminal, Database, Shield, Smartphone, Download } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutMe() {
   const { t } = useLanguage();
@@ -101,12 +102,12 @@ export default function AboutMe() {
               >
                 <Download className="w-4 h-4" /> {t("about_downloadCV")}
               </a>
-              <a
+              <Link
                 href="/#iletisim"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground/5 border border-border text-foreground font-semibold hover:bg-foreground/10 transition-colors"
               >
                 {t("about_contact")}
-              </a>
+              </Link>
             </div>
 
           </div>

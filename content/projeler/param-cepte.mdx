@@ -1,0 +1,50 @@
+---
+title: "Param Cepte: Offline-First Kişisel Finans Uygulaması"
+description: "Kullanıcıların internet bağlantısı olmadan da anlık finansal veri girişi yapabilmesi için geliştirilmiş, Hive NoSQL destekli çevrimdışı öncelikli (offline-first) mobil uygulama."
+date: "2024-03-15"
+readTime: "6 dk"
+---
+
+# Param Cepte: Offline-First Kişisel Finans Uygulaması
+
+## Genel Bakış
+Param Cepte, kişisel finans ve dijital abonelik takip uygulamasıdır. Çevrimdışı öncelikli (offline-first) mimari üzerine kurgulanan bu mobil uygulama, tamamen Flutter ve Dart ile geliştirilmiş olup Google Play'de canlı olarak yayındadır.
+
+## Problem
+Mobil finans uygulamalarının büyük çoğunluğu, kullanıcıların veri girişi anında internet bağlantısına ihtiyaç duyar. Kullanıcıların hareket halindeyken, internet bağlantısının zayıf olduğu veya bulunmadığı ortamlarda bile anlık finansal veri girişi yapabilmesi ve bu verilerin güvenli bir şekilde cihazda saklanıp bağlantı sağlandığında arka planda senkronize edilmesi gerekiyordu.
+
+## Çözüm
+Flutter mimarisi üzerinde **Hive NoSQL** kullanılarak '%100 Offline-First' bir yapı kuruldu. Bu sayede uygulama internet bağlantısı olmaksızın en yüksek hızda çalışırken, State Management aracılığıyla internet geldiğinde asenkron senkronizasyon yeteneğine sahip oldu.
+
+## Şükrü BAŞ'ın Rolü
+Bu projede Mobile App Developer ve Application Architect olarak görev aldım. Projenin sıfırdan mimari tasarımının (State Management, yerel veritabanı şeması ve senkronizasyon katmanı) yapılması ve uygulamanın Google Play Store standartlarına göre yayınlanma aşamalarını yönettim.
+
+## Teknolojiler ve Kullanılan Teknolojiler
+- **Frontend/Mobile:** Flutter, Dart
+- **Database (Local):** Hive NoSQL
+- **Architecture:** Offline-First, BLoC / Provider (State Management)
+- **Deployment:** Google Play Store
+
+## Mimari
+Uygulama, yerel depolama cihazında (Hive NoSQL) tutulan verilerin (harcamalar, gelirler, abonelikler) arayüz tarafından anında okunup yazılabilmesini sağlayan bir yapıya sahiptir. 
+- **Mobil İstemci:** Flutter ile hazırlanan UI, doğrudan Hive ile etkileşime geçer.
+- **Senkronizasyon Katmanı:** İşletim sisteminden "Ağ bağlantısı sağlandı" (Connectivity) sinyali alındığında arka planda çalışan Worker'lar değişiklikleri sıraya alır ve buluta gönderir.
+
+## Teknik Zorluklar
+1. **Veri Çakışmaları (Conflict Resolution):** Cihaz çevrimdışıyken yapılan değişikliklerin, senkronizasyon sırasında sunucu tarafındaki güncel verilerle çakışması.
+2. **Performans:** Hive NoSQL üzerinde tutulan veri seti büyüdükçe liste ekranlarının (özellikle raporlama grafiklerinin) donmadan (60 FPS) render edilmesi.
+
+## Çözüm Yaklaşımı
+Hive Box'ları verimli şekilde indekslendi ve sadece "Değişen" (Dirty state) verilerin arka planda (Isolate) işlenmesi kuralı getirildi. Flutter'ın CustomPainter widget'ı kullanılarak finansal grafiklerin doğrudan GPU üzerinde çizilmesi sağlandı.
+
+## Sonuç
+Kullanıcı deneyimi büyük oranda arttı; internet gereksiniminin ortadan kalkmasıyla uygulamanın retention (elde tutma) oranlarında pozitif geri dönüşler elde edildi. 
+
+## Öğrenilenler
+Offline-first mimarilerde asıl mühendislik zorluğunun veritabanı okuma-yazma işlemlerinden ziyade, "State"lerin asenkron ortamlarda ve arayüzde doğru şekilde yansıtılmasında (Optimistic UI Updates) yattığı tecrübe edildi.
+
+## Related Projects
+- [Göl Lokantası: Kurumsal Web ve Menü Sistemi](/projeler/gol-lokantasi)
+
+## Related Articles
+- [Flutter'da Offline-First Mimari Nasıl Tasarlanır?](/blog/flutter-offline-first)

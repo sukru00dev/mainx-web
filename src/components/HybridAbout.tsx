@@ -91,7 +91,7 @@ export default function HybridAbout() {
                   </div>
                 </div>
                 <p className="text-sm italic text-muted-foreground">
-                  "Kod, sadece çalışan bir metin değil; kurumların dijital varlığını ayakta tutan en sağlam temeldir."
+                  &quot;Kod, sadece çalışan bir metin değil; kurumların dijital varlığını ayakta tutan en sağlam temeldir.&quot;
                 </p>
               </div>
             </div>
