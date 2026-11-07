@@ -1,9 +1,31 @@
 import { constructMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Code2, Server, Smartphone, BrainCircuit, Blocks } from "lucide-react";
+import { ArrowLeft, CheckCircle, Code2, Server, Smartphone, BrainCircuit, Blocks, Globe, Laptop } from "lucide-react";
 
 const services = {
+  "sanliurfa-web-tasarim-ve-kurumsal-web-sitesi": {
+    title: "Şanlıurfa Web Tasarım ve Kurumsal Web Yazılım Çözümleri",
+    description: "Şanlıurfa'daki işletmelere özel modern, ultra hızlı, SEO uyumlu kurumsal web siteleri ve dijital vitrin çözümleri.",
+    icon: Globe,
+    features: [
+      "Next.js ile Modern Mimari & Ultra Hız",
+      "Google 1. Sıra Hedefli Yerel SEO Optimizasyonu",
+      "Mobil ve Tablet Uyumlu Responsive Tasarım",
+      "Hızlı Yönetim Paneli & Kolay İçerik Yönetimi (CMS)"
+    ]
+  },
+  "sanliurfa-ozel-yazilim-gelistirme": {
+    title: "Şanlıurfa Özel Yazılım Geliştirme ve Kurumsal Otomasyon",
+    description: "İşletmenizin operasyonel süreçlerini dijitalleştiren, Şanlıurfa ve bölge firmalarına özel bulut tabanlı B2B sistemler ve kurumsal yazılımlar.",
+    icon: Laptop,
+    features: [
+      "İşletmeye Özel Süreç Yönetimi & Dashboard",
+      "B2B SaaS ve ERP Entegrasyonları",
+      "Yüksek Güvenlikli Veritabanı Mimarisi (PostgreSQL/Cloud)",
+      "Uçtan Uca Teknik Destek ve SLA Bakım Garantisi"
+    ]
+  },
   "yapay-zeka-entegrasyonu": {
     title: "Yapay Zeka (AI) ve LLM Entegrasyonları",
     description: "Şirket verilerinizi anlayan, otonom çalışan ve iş süreçlerinizi otomatize eden yapay zeka ajanları (AI Agents) ve RAG sistemleri geliştiriyoruz.",
@@ -36,7 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return constructMetadata();
 
   return constructMetadata({
-    title: `${service.title} Hizmetleri | MainX`,
+    title: `${service.title} | MainX Stüdyoları`,
     description: service.description,
     path: `/hizmetler/${resolvedParams.slug}`,
   });
@@ -92,6 +114,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <span className="font-medium text-foreground/80">{feature}</span>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 p-8 rounded-3xl bg-primary/10 border border-primary/20 text-center">
+          <h3 className="text-2xl font-bold mb-3 text-foreground">Projenizi Şanlıurfa'da veya Online Başlatalım</h3>
+          <p className="mb-6 text-foreground/70 max-w-xl mx-auto">
+            İhtiyaçlarınıza özel mimari planlama ve ücretsiz ön analiz toplantısı için bizimle hemen iletişime geçin.
+          </p>
+          <Link href="/#iletisim" className="inline-block px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold hover:scale-105 transition-transform shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            Hemen Teklif Alın
+          </Link>
         </div>
       </div>
     </div>

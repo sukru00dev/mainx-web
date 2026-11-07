@@ -6,7 +6,9 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Sparkles, ChevronRight, ArrowRight, Code2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Globe from "./Globe";
+import dynamic from "next/dynamic";
+
+const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -63,6 +65,21 @@ export default function Hero() {
           
           {/* Left Text Content */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <Link
+                href="/sanliurfa-yazilim"
+                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-wide uppercase hover:bg-primary/15 transition-all shadow-sm"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
+                <span>{t("hero_badge")}</span>
+                <ChevronRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}

@@ -2,55 +2,75 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 import { 
   MonitorSmartphone, Database, BrainCircuit, Lock, 
-  ShoppingCart, Server, Code, Sparkles, Smartphone 
+  ShoppingCart, Server, Code, Sparkles, Smartphone, Globe, Laptop, ArrowUpRight
 } from "lucide-react";
 
 const services = [
   {
-    icon: MonitorSmartphone,
-    title: "Web & SaaS Platformları",
-    desc: "Next.js ve React ile ölçeklenebilir B2B SaaS panelleri ve kurumsal web uygulamaları."
+    icon: Globe,
+    title: "Şanlıurfa Web Tasarım",
+    desc: "Google 1. sıra hedefli, ultra hızlı, mobil uyumlu ve modern kurumsal web siteleri.",
+    slug: "sanliurfa-web-tasarim-ve-kurumsal-web-sitesi"
   },
   {
-    icon: Smartphone, // Wait, Smartphone is missing. Let me use MonitorSmartphone for now
+    icon: Laptop,
+    title: "Şanlıurfa Özel Yazılım",
+    desc: "İşletmenizin operasyonlarını hızlandıran bulut tabanlı B2B sistemler ve yönetim panelleri.",
+    slug: "sanliurfa-ozel-yazilim-gelistirme"
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Web & SaaS Platformları",
+    desc: "Next.js ve React ile ölçeklenebilir B2B SaaS panelleri ve kurumsal web uygulamaları.",
+    slug: "ozel-saas-yazilimlari"
+  },
+  {
+    icon: Smartphone,
     title: "Mobil Uygulama Geliştirme",
-    desc: "Flutter ile hem iOS hem Android için native performansında modern mobil uygulamalar."
+    desc: "Flutter ile hem iOS hem Android için native performansında modern mobil uygulamalar.",
+    slug: "mobil-uygulama-gelistirme"
   },
   {
     icon: BrainCircuit,
     title: "Yapay Zeka (AI) Çözümleri",
-    desc: "n8n ve Ollama kullanarak şirket içi verilere entegre otonom ajanlar ve chatbotlar."
+    desc: "n8n ve Ollama kullanarak şirket içi verilere entegre otonom ajanlar ve chatbotlar.",
+    slug: "yapay-zeka-entegrasyonu"
   },
   {
     icon: Lock,
     title: "Blok Zinciri (Web3)",
-    desc: "Hyperledger Fabric ve Go ile gizlilik odaklı, güvenilir DApp ve smart contract mimarileri."
+    desc: "Hyperledger Fabric ve Go ile gizlilik odaklı, güvenilir DApp ve smart contract mimarileri.",
+    slug: "blockchain-cozumleri"
   },
   {
     icon: ShoppingCart,
     title: "E-Ticaret Altyapıları",
-    desc: "Yüksek trafik kaldırabilen, modern ödeme sistemleri entegreli B2C e-ticaret siteleri."
+    desc: "Yüksek trafik kaldırabilen, modern ödeme sistemleri entegreli B2C e-ticaret siteleri.",
+    slug: null
   },
   {
     icon: Server,
     title: "DevOps & Sunucu Yönetimi",
-    desc: "Docker, CI/CD pipeline kurulumu ve Oracle/AWS üzerinde güvenli sunucu mimarisi."
+    desc: "Docker, CI/CD pipeline kurulumu ve Oracle/AWS üzerinde güvenli sunucu mimarisi.",
+    slug: null
   },
   {
     icon: Code,
     title: "Gömülü Sistemler (Donanım)",
-    desc: "Assembly ve mikrodenetleyiciler ile fiziksel sistem entegrasyonu (IoT)."
+    desc: "Assembly ve mikrodenetleyiciler ile fiziksel sistem entegrasyonu (IoT).",
+    slug: null
   },
   {
     icon: Sparkles,
     title: "Siber Güvenlik & Denetim",
-    desc: "KVKK uyumlu altyapılar ve web uygulamaları için siber zafiyet testleri."
+    desc: "KVKK uyumlu altyapılar ve web uygulamaları için siber zafiyet testleri.",
+    slug: null
   }
 ];
-
 
 export default function ServicesBento() {
   const { t } = useLanguage();
@@ -80,20 +100,60 @@ export default function ServicesBento() {
         
         {/* Row 1: Marquee Left */}
         <div className="flex w-[300%] sm:w-[200%] md:w-[150%] xl:w-[120%] 2xl:w-[100%] animate-marquee group-hover:[animation-play-state:paused] gap-6 px-4">
-          {marqueeItems.map((service, i) => (
-            <div 
-              key={i}
-              className="w-[350px] flex-shrink-0 p-8 rounded-[2rem] bg-foreground/5 border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 cursor-pointer flex flex-col"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-background border border-border flex items-center justify-center mb-6">
-                <service.icon className="w-6 h-6 text-primary" />
+          {marqueeItems.map((service, i) => {
+            const isDuplicate = i >= services.length;
+            const CardContent = (
+              <div 
+                className="w-[350px] flex-shrink-0 p-8 rounded-[2rem] bg-foreground/5 border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 cursor-pointer flex flex-col h-full group/card"
+                aria-hidden={isDuplicate ? "true" : undefined}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-background border border-border flex items-center justify-center group-hover/card:scale-110 transition-transform">
+                    <service.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  {service.slug && (
+                    <span className="p-2 rounded-full bg-foreground/5 text-foreground/40 group-hover/card:text-primary group-hover/card:bg-primary/10 transition-colors">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  )}
+                </div>
+
+                {/* Primary copy has h3 for SEO, duplicate copy uses div to prevent duplicate headings */}
+                {!isDuplicate ? (
+                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover/card:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                ) : (
+                  <div className="text-xl font-bold mb-3 text-foreground group-hover/card:text-primary transition-colors">
+                    {service.title}
+                  </div>
+                )}
+
+                <p className="text-foreground/50 text-sm leading-relaxed flex-grow">
+                  {service.desc}
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">{service.title}</h3>
-              <p className="text-foreground/50 text-sm leading-relaxed flex-grow">
-                {service.desc}
-              </p>
-            </div>
-          ))}
+            );
+
+            if (service.slug) {
+              return (
+                <Link
+                  key={i}
+                  href={`/hizmetler/${service.slug}`}
+                  tabIndex={isDuplicate ? -1 : 0}
+                  className="outline-none"
+                >
+                  {CardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={i} className="outline-none">
+                {CardContent}
+              </div>
+            );
+          })}
         </div>
 
       </div>

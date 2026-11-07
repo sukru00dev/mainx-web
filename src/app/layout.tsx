@@ -9,9 +9,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollFix from "@/components/ScrollFix";
 import SplashScreen from "@/components/SplashScreen";
-import MatrixOverlay from "@/components/MatrixOverlay";
-import OnboardingWizard from "@/components/OnboardingWizard";
-import DesignAssistant from "@/components/DesignAssistant";
+import ClientOverlays from "@/components/ClientOverlays";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,9 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <main className="flex-1 flex flex-col pt-16">{children}</main>
             <Footer />
-            <OnboardingWizard />
-            <MatrixOverlay />
-            <DesignAssistant />
+            <ClientOverlays />
           </LanguageProvider>
         </ThemeProvider>
       </body>

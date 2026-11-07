@@ -1,6 +1,6 @@
 "use client";
 
-import { Terminal } from "lucide-react";
+import { Terminal, MapPin } from "lucide-react";
 import Link from "next/link";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium } from "react-icons/fa";
 
@@ -11,7 +11,8 @@ export default function Footer() {
       
       <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-[100rem] pt-20 pb-10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-2">
+          {/* Kolon 1: Marka & Açıklama */}
+          <div>
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20">
                 <Terminal className="w-5 h-5 text-primary" />
@@ -21,43 +22,93 @@ export default function Footer() {
                 <span className="text-[10px] text-foreground/40 tracking-[0.2em] uppercase mt-1">Stüdyoları</span>
               </div>
             </Link>
-            <p className="text-foreground/50 max-w-md leading-relaxed mb-8">
-              <Link href="/sukru-bas" className="hover:text-primary transition-colors font-medium">Şükrü BAŞ</Link> tarafından kurulan, yenilikçi web teknolojileri, mobil uygulamalar, yapay zeka sistemleri ve blok zinciri mimarileri geliştiren Ar-Ge ve mühendislik stüdyosu.
+            <p className="text-foreground/50 leading-relaxed mb-8 text-sm">
+              <Link href="/sukru-bas" className="hover:text-primary transition-colors font-medium">Şükrü BAŞ</Link> liderliğinde Şanlıurfa merkezli; kurumsal web tasarım, mobil uygulama, yapay zeka ve B2B SaaS geliştiren mühendislik stüdyosu.
             </p>
-            <div className="flex gap-4">
-              <a href="https://github.com/sukru00dev" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
-                <FaGithub className="w-5 h-5" />
+            <div className="flex gap-3">
+              <a href="https://github.com/sukru00dev" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-9 h-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
+                <FaGithub className="w-4 h-4" />
               </a>
-              <a href="https://www.linkedin.com/in/sukrubasdev" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
-                <FaLinkedin className="w-5 h-5" />
+              <a href="https://www.linkedin.com/in/sukrubasdev" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
+                <FaLinkedin className="w-4 h-4" />
               </a>
-              <a href="https://instagram.com/sukrukodluyor" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
-                <FaInstagram className="w-5 h-5" />
+              <a href="https://instagram.com/sukrukodluyor" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
+                <FaInstagram className="w-4 h-4" />
               </a>
-              <a href="https://medium.com/@sukrubas" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
-                <FaMedium className="w-5 h-5" />
+              <a href="https://medium.com/@sukrubas" target="_blank" rel="noreferrer" aria-label="Medium" className="w-9 h-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 hover:text-foreground text-foreground/50 transition-colors border border-border">
+                <FaMedium className="w-4 h-4" />
               </a>
             </div>
           </div>
           
+          {/* Kolon 2: Şanlıurfa Yazılım Çözümleri */}
+          <div>
+            <h4 className="font-bold text-foreground mb-6 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary" /> Şanlıurfa Yazılım Çözümleri
+            </h4>
+            <ul className="flex flex-col gap-3 text-sm">
+              <li>
+                <Link href="/sanliurfa-yazilim" className="text-foreground/70 hover:text-primary font-medium transition-colors">
+                  Şanlıurfa Yazılım Geliştirme
+                </Link>
+              </li>
+              <li>
+                <Link href="/hizmetler/sanliurfa-web-tasarim-ve-kurumsal-web-sitesi" className="text-foreground/50 hover:text-primary transition-colors">
+                  Şanlıurfa Web Tasarım & Kurumsal Web
+                </Link>
+              </li>
+              <li>
+                <Link href="/hizmetler/sanliurfa-ozel-yazilim-gelistirme" className="text-foreground/50 hover:text-primary transition-colors">
+                  Özel Yazılım & Kurumsal Otomasyon
+                </Link>
+              </li>
+              <li>
+                <Link href="/hizmetler/mobil-uygulama-gelistirme" className="text-foreground/50 hover:text-primary transition-colors">
+                  Flutter Mobil Uygulama (iOS/Android)
+                </Link>
+              </li>
+              <li>
+                <Link href="/hizmetler/yapay-zeka-entegrasyonu" className="text-foreground/50 hover:text-primary transition-colors">
+                  Yapay Zeka (AI) & Ajan Sistemleri
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Kolon 3: Kurumsal & Sayfalar */}
           <div>
             <h4 className="font-bold text-foreground mb-6">Kurumsal</h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 text-sm">
               <li><Link href="/#hakkimizda" className="text-foreground/50 hover:text-foreground transition-colors">Hakkımızda</Link></li>
               <li><Link href="/katalog" className="text-foreground/50 hover:text-foreground transition-colors">Hizmet Kataloğu</Link></li>
-              <li><Link href="/#urunler" className="text-foreground/50 hover:text-foreground transition-colors">Ürünler (Özel Projeler)</Link></li>
-              <li><Link href="/#iletisim" className="text-foreground/50 hover:text-foreground transition-colors">İletişim</Link></li>
+              <li><Link href="/#urunler" className="text-foreground/50 hover:text-foreground transition-colors">Ürünler & Referans Projeler</Link></li>
+              <li><Link href="/blog" className="text-foreground/50 hover:text-foreground transition-colors">Teknoloji & Yazılım Blogu</Link></li>
+              <li><Link href="/sukru-bas" className="text-foreground/50 hover:text-foreground transition-colors">Kurucu Profili (Şükrü BAŞ)</Link></li>
+              <li><Link href="/#iletisim" className="text-foreground/50 hover:text-foreground transition-colors">İletişim & Teklif Formu</Link></li>
             </ul>
           </div>
           
+          {/* Kolon 4: İletişim & Konum */}
           <div>
             <h4 className="font-bold text-foreground mb-6">İletişim & Konum</h4>
-            <ul className="flex flex-col gap-4 text-foreground/50">
-              <li>📍 Şanlıurfa / Türkiye</li>
-              <li>
-                ✉️ <a href="mailto:hello.mainx@gmail.com" className="hover:text-primary transition-colors">hello.mainx@gmail.com</a>
+            <ul className="flex flex-col gap-4 text-foreground/50 text-sm">
+              <li className="flex items-start gap-2">
+                <span>📍</span>
+                <span>Selahaddin Eyyübi, Şanlıurfa / Türkiye</span>
               </li>
-              <li>📞 +90 545 882 2670</li>
+              <li className="flex items-center gap-2">
+                <span>✉️</span>
+                <a href="mailto:hello.mainx@gmail.com" className="hover:text-primary transition-colors">hello.mainx@gmail.com</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <span>📞</span>
+                <a href="tel:+905458822670" className="hover:text-primary transition-colors">+90 545 882 2670</a>
+              </li>
+              <li>
+                <span className="text-xs text-emerald-500 font-semibold bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 inline-block">
+                  ● 7/24 Teknik Danışmanlık ve Destek
+                </span>
+              </li>
             </ul>
           </div>
         </div>
@@ -70,7 +121,7 @@ export default function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
             </span>
-            <span className="text-xs font-semibold text-primary tracking-wider">YENİ NESİL TEKNOLOJİLERLE GELİŞTİRİLDİ</span>
+            <span className="text-xs font-semibold text-primary tracking-wider">ŞANLIURFA & GLOBAL MÜHENDİSLİK</span>
           </div>
         </div>
       </div>

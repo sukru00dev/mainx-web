@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-
 import { ChevronDown, MessageCircleQuestion } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function FAQ() {
   const { t } = useLanguage();
@@ -30,6 +28,14 @@ export default function FAQ() {
     {
       question: t("faq5_q"),
       answer: t("faq5_a")
+    },
+    {
+      question: t("faq6_q"),
+      answer: t("faq6_a")
+    },
+    {
+      question: t("faq7_q"),
+      answer: t("faq7_a")
     }
   ];
 
@@ -63,25 +69,23 @@ export default function FAQ() {
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     className="w-full px-6 py-6 flex items-center justify-between text-left"
+                    aria-expanded={isOpen}
                   >
                     <span className="font-bold text-lg text-foreground pr-8">{faq.question}</span>
                     <ChevronDown className={`w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                   </button>
                   
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="px-6 pb-6 text-foreground/60 leading-relaxed border-t border-border/50 pt-4 mt-2">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-6 pb-6 text-foreground/60 leading-relaxed border-t border-border/50 pt-4 mt-2">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })}

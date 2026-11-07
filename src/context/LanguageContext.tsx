@@ -18,10 +18,10 @@ const translations = {
     nav_langSwitch: "EN",
 
     // Hero
-    hero_badge: "TÜBİTAK 2209-A Blok Zinciri Projesi Onaylandı",
-    hero_title1: "Modern Dijital Ürünler ve",
-    hero_title2: "Yazılım Çözümleri.",
-    hero_desc: "MainX Stüdyoları by Şükrü BAŞ. Kurumsal firmalar için ölçeklenebilir B2B SaaS panelleri, otonom yapay zeka ajanları ve güvenli blok zinciri mimarileri inşa ediyoruz.",
+    hero_badge: "Şanlıurfa Yazılım Geliştirme & Dijital Ürün Stüdyosu",
+    hero_title1: "Şanlıurfa'dan Dünyaya Modern Dijital Ürünler ve",
+    hero_title2: "Yazılım Geliştirme Çözümleri.",
+    hero_desc: "MainX Stüdyoları by Şükrü BAŞ. Şanlıurfa merkezli yazılım geliştirme stüdyosu olarak kurumsal firmalar için ölçeklenebilir B2B SaaS panelleri, kurumsal web tasarım, Flutter mobil uygulamalar, otonom yapay zeka ajanları ve güvenli blok zinciri mimarileri inşa ediyoruz.",
     hero_cta1: "Proje Başlat",
     hero_cta2: "Hizmet Kataloğu",
 
@@ -122,6 +122,10 @@ const translations = {
     faq4_a: "Şirket içi verilerinizi analiz eden özel LLM ajanları, müşteri hizmetleri chatbotları, RAG sistemleri ve n8n ile otonom iş akışları kurabiliyoruz.",
     faq5_q: "Proje tesliminden sonra teknik destek veriyor musunuz?",
     faq5_a: "Evet. Tüm projelerimizde teslimat sonrası 1-3 ay arasında ücretsiz hata düzeltme ve sistem izleme desteği sunuyoruz.",
+    faq6_q: "Şanlıurfa'da yüz yüze yazılım geliştirme ve web tasarım hizmeti veriyor musunuz?",
+    faq6_a: "Evet. MainX Stüdyoları Şanlıurfa merkezli bir yazılım geliştirme firmasıdır. Şanlıurfa ve Güneydoğu Anadolu bölgesindeki işletmelerle yüz yüze analiz toplantıları gerçekleştiriyor, Türkiye genelinde ve yurt dışında ise uçtan uca çevik proje yönetimiyle kurumsal web tasarım, mobil uygulama ve özel yazılım çözümleri sunuyoruz.",
+    faq7_q: "Şanlıurfa yazılım geliştirme ve kurumsal web sitesi fiyatları neye göre belirleniyor?",
+    faq7_a: "Projenin teknik kapsamına, özel tasarım ihtiyaçlarına, mobil veya yapay zeka entegrasyonlarına göre fiyatlandırma yapılır. Sayfamızdaki Proje Maliyet Hesaplayıcı aracımızla Şanlıurfa web tasarım, e-ticaret, B2B SaaS veya mobil uygulama projenizin tahmini bütçesini ve teslim süresini anında hesaplayabilirsiniz.",
 
     // Contact
     contact_label: "Akıllı Asistan",
@@ -189,10 +193,10 @@ const translations = {
     nav_langSwitch: "TR",
 
     // Hero
-    hero_badge: "TÜBİTAK 2209-A Blockchain Project Approved",
-    hero_title1: "Modern Digital Products and",
+    hero_badge: "Software Development & Digital Product Studio in Şanlıurfa",
+    hero_title1: "From Şanlıurfa to the World: Modern Digital Products &",
     hero_title2: "Software Solutions.",
-    hero_desc: "MainX Studios by Şükrü BAŞ. We build scalable B2B SaaS dashboards, autonomous AI agents, and secure blockchain architectures for enterprises.",
+    hero_desc: "MainX Studios by Şükrü BAŞ. As a software development studio based in Şanlıurfa, we build scalable B2B SaaS dashboards, corporate web designs, Flutter mobile apps, autonomous AI agents, and secure blockchain architectures for enterprises.",
     hero_cta1: "Start a Project",
     hero_cta2: "Service Catalog",
 
@@ -293,6 +297,10 @@ const translations = {
     faq4_a: "We can build custom LLM agents that analyze your internal data, customer service chatbots, RAG systems, and autonomous workflows with n8n.",
     faq5_q: "Do you provide technical support after project delivery?",
     faq5_a: "Yes. For all our projects, we offer free bug-fixing and system monitoring support for 1-3 months after delivery.",
+    faq6_q: "Do you provide in-person software development and web design services in Şanlıurfa?",
+    faq6_a: "Yes. MainX Studios is a software development studio based in Şanlıurfa. We conduct face-to-face analysis meetings in Şanlıurfa and the Southeastern Anatolia region, and provide end-to-end agile software development, mobile apps, and web design worldwide.",
+    faq7_q: "How are software development and web design pricing determined?",
+    faq7_a: "Pricing is determined by the technical scope, custom UI/UX requirements, mobile features, or AI integrations. You can estimate your project budget and delivery time immediately using our Project Cost Estimator.",
 
     // Contact
     contact_label: "Smart Assistant",

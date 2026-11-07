@@ -147,3 +147,88 @@ export function BreadcrumbSchema({
     />
   );
 }
+
+export function LocalBusinessSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": ["ProfessionalService", "LocalBusiness"],
+    "@id": `${SITE_URL}/#localbusiness`,
+    name: "MainX Yazılım&Geliştirme Stüdyoları",
+    alternateName: "MainX Stüdyoları",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/sukru-bas-yazilim-uzmani.jpg`,
+    description: "Şanlıurfa merkezli yazılım geliştirme, kurumsal web tasarım, B2B SaaS, mobil uygulama geliştirme ve yapay zeka stüdyosu.",
+    telephone: "+905458822670",
+    email: "hello.mainx@gmail.com",
+    priceRange: "₺₺",
+    founder: {
+      "@type": "Person",
+      name: "Şükrü BAŞ",
+      url: `${SITE_URL}/sukru-bas`
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Selahaddin Eyyübi",
+      addressLocality: "Şanlıurfa Merkez",
+      addressRegion: "Şanlıurfa",
+      postalCode: "63000",
+      addressCountry: "TR"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 37.1674,
+      longitude: 38.7955
+    },
+    areaServed: [
+      { "@type": "City", name: "Şanlıurfa" },
+      { "@type": "AdministrativeArea", name: "Güneydoğu Anadolu" },
+      { "@type": "Country", name: "Türkiye" }
+    ],
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Şanlıurfa Yazılım Geliştirme Hizmetleri",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Şanlıurfa Özel Yazılım ve B2B SaaS Geliştirme" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Şanlıurfa Kurumsal Web Tasarım ve E-Ticaret" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Şanlıurfa Mobil Uygulama Geliştirme (iOS & Android)" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Yapay Zeka (AI) ve Otomasyon Entegrasyonu" } }
+      ]
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function FAQSchema({ faqs }: { faqs: { question: string; answer: string }[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

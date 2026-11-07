@@ -1,20 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlayCircle, ExternalLink } from "lucide-react";
-import { FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 const videos = [
   {
     title: "Sınav Yönetim Sistemi - AI Entegrasyonu",
     desc: "Python ve MediaPipe ile geliştirilen optik kağıt okuma sisteminin donanım testi.",
-    url: "https://www.youtube.com/embed/RNAjrT8wHmQ?autoplay=1&mute=1&loop=1&playlist=RNAjrT8wHmQ&controls=0",
+    url: "https://www.youtube.com/embed/RNAjrT8wHmQ?autoplay=0&mute=1&loop=1&playlist=RNAjrT8wHmQ&controls=1",
     platform: "youtube"
   },
   {
     title: "Gömülü Sistemler (PIC16F84A) - Yangın Kontrol",
     desc: "Assembly ile programlanmış donanım seviyesi yangın sensörü simülasyonu.",
-    url: "https://www.youtube.com/embed/3yJWDzN-Z4A?autoplay=1&mute=1&loop=1&playlist=3yJWDzN-Z4A&controls=0",
+    url: "https://www.youtube.com/embed/3yJWDzN-Z4A?autoplay=0&mute=1&loop=1&playlist=3yJWDzN-Z4A&controls=1",
     platform: "youtube"
   }
 ];
@@ -53,7 +52,8 @@ export default function SocialWall() {
                   height="100%"
                   src={video.url}
                   title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0"
                 />
@@ -79,11 +79,11 @@ export default function SocialWall() {
           >
             <iframe 
               src="https://www.instagram.com/p/DaLtCJ8DP94/embed" 
+              title="MainX Stüdyoları Instagram Paylaşımı 1"
+              loading="lazy"
               width="320" 
               height="450" 
-              frameBorder="0" 
-              scrolling="no" 
-              className="rounded-xl max-w-full"
+              className="rounded-xl max-w-full border-0"
             />
           </motion.div>
 
@@ -96,11 +96,11 @@ export default function SocialWall() {
           >
             <iframe 
               src="https://www.instagram.com/p/DaLrztBDNqN/embed" 
+              title="MainX Stüdyoları Instagram Paylaşımı 2"
+              loading="lazy"
               width="320" 
               height="450" 
-              frameBorder="0" 
-              scrolling="no" 
-              className="rounded-xl max-w-full"
+              className="rounded-xl max-w-full border-0"
             />
           </motion.div>
 
@@ -113,11 +113,11 @@ export default function SocialWall() {
           >
             <iframe 
               src="https://www.instagram.com/reel/DaiDJl5sfMP/embed" 
+              title="MainX Stüdyoları Instagram Reels"
+              loading="lazy"
               width="320" 
               height="450" 
-              frameBorder="0" 
-              scrolling="no" 
-              className="rounded-xl max-w-full"
+              className="rounded-xl max-w-full border-0"
             />
           </motion.div>
         </div>

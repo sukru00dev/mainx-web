@@ -11,6 +11,11 @@ export default function SplashScreen() {
   const [show, setShow] = useState(() => {
     if (typeof window !== "undefined") {
       try {
+        const isBot =
+          /bot|googlebot|crawler|spider|robot|crawling|headless/i.test(navigator.userAgent || "") ||
+          Boolean(navigator.webdriver);
+        if (isBot) return false;
+
         if (sessionStorage.getItem("mainx_splash_seen")) return false;
       } catch (e) {}
     }
@@ -22,21 +27,23 @@ export default function SplashScreen() {
   useEffect(() => {
     if (!show) return;
 
-    const t1 = setTimeout(() => setStep(1), 2500);
-    const t2 = setTimeout(() => setStep(2), 3800);
+    const t1 = setTimeout(() => setStep(1), 500);
+    const t2 = setTimeout(() => setStep(2), 900);
     const t3 = setTimeout(() => {
       setShow(false);
       try {
         sessionStorage.setItem("mainx_splash_seen", "1");
       } catch (e) {}
-    }, 4600);
+    }, 1200);
 
     return () => { 
       clearTimeout(t1); 
       clearTimeout(t2); 
       clearTimeout(t3); 
     };
-  }, []);
+  }, [show]);
+
+  if (!show) return null;
 
   const [{ arcs, rings }] = useState(() => {
     const N = 30;
@@ -117,9 +124,9 @@ export default function SplashScreen() {
               <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.4)]">
                 <span className="text-2xl font-black text-primary">M</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+              <div className="text-4xl md:text-6xl font-bold tracking-tight text-white" aria-hidden="true">
                 MainX<span className="text-primary">.</span>
-              </h1>
+              </div>
               <p className="text-white/40 text-sm tracking-[0.4em] uppercase font-medium">
                 Stüdyoları by Şükrü BAŞ
               </p>

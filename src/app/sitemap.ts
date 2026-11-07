@@ -3,6 +3,8 @@ import { SITE_URL } from '@/lib/seo';
 import { getAllPosts } from '@/lib/mdx';
 
 const services = [
+  "sanliurfa-web-tasarim-ve-kurumsal-web-sitesi",
+  "sanliurfa-ozel-yazilim-gelistirme",
   "yapay-zeka-entegrasyonu",
   "mobil-uygulama-gelistirme",
   "ozel-saas-yazilimlari",

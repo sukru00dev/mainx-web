@@ -2,6 +2,18 @@
 ﻿import { constructMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowLeft, MapPin, Code, Smartphone, Cloud, Bot, Briefcase } from 'lucide-react';
+import { LocalBusinessSchema, FAQSchema } from '@/components/seo/JsonLd';
+
+const sanliurfaFaqs = [
+  {
+    question: "Şanlıurfa'da yüz yüze yazılım geliştirme ve web tasarım hizmeti veriyor musunuz?",
+    answer: "Evet. MainX Stüdyoları Şanlıurfa merkezli bir yazılım geliştirme firmasıdır. Şanlıurfa ve Güneydoğu Anadolu bölgesindeki işletmelerle yüz yüze analiz toplantıları gerçekleştiriyor, Türkiye genelinde ve yurt dışında ise uçtan uca çevik proje yönetimiyle kurumsal web tasarım, mobil uygulama ve özel yazılım çözümleri sunuyoruz."
+  },
+  {
+    question: "Şanlıurfa yazılım geliştirme ve kurumsal web sitesi fiyatları neye göre belirleniyor?",
+    answer: "Projenin teknik kapsamına, özel tasarım ihtiyaçlarına, mobil veya yapay zeka entegrasyonlarına göre fiyatlandırma yapılır. Sayfamızdaki Proje Maliyet Hesaplayıcı aracımızla Şanlıurfa web tasarım, e-ticaret, B2B SaaS veya mobil uygulama projenizin tahmini bütçesini ve teslim süresini anında hesaplayabilirsiniz."
+  }
+];
 
 export const metadata = constructMetadata({
   title: 'Şanlıurfa Yazılım Geliştirme | MainX Stüdyoları',
@@ -12,6 +24,8 @@ export const metadata = constructMetadata({
 export default function SanliurfaLocalSEO() {
   return (
     <div className="min-h-screen bg-background pt-32 pb-24 relative">
+      <LocalBusinessSchema />
+      <FAQSchema faqs={sanliurfaFaqs} />
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
       
       <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-[100rem] relative z-10">

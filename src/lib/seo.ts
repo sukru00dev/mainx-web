@@ -1,23 +1,37 @@
-﻿export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mainx-web.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mainx-web.vercel.app";
+
+const DEFAULT_KEYWORDS = [
+  "Şanlıurfa yazılım",
+  "Şanlıurfa yazılım geliştirme",
+  "Şanlıurfa yazılım şirketi",
+  "Şanlıurfa web tasarım",
+  "Şanlıurfa mobil uygulama geliştirme",
+  "Urfa yazılım firmaları",
+  "MainX Stüdyoları",
+  "Şükrü BAŞ",
+];
 
 export function constructMetadata({
-  title = "MainX Stüdyoları | Yazılım, Yapay Zeka ve Dijital Çözümler",
-  description = "MainX Stüdyoları; web ve SaaS uygulamaları, yapay zeka, mobil uygulamalar, kurumsal yazılım ve modern dijital çözümler geliştirir.",
+  title = "MainX Stüdyoları | Şanlıurfa Yazılım Geliştirme, Web Tasarım & Mobil Uygulama",
+  description = "Şanlıurfa yazılım geliştirme firması MainX Stüdyoları (Şükrü BAŞ); kurumsal web tasarım, B2B SaaS, Flutter mobil uygulama, yapay zeka ve blok zinciri çözümleri sunar.",
   image = "/sukru-bas-yazilim-uzmani.jpg",
   path = "",
   noIndex = false,
+  keywords = DEFAULT_KEYWORDS,
 }: {
   title?: string;
   description?: string;
   image?: string;
   path?: string;
   noIndex?: boolean;
+  keywords?: string[];
 } = {}) {
   const url = `${SITE_URL}${path}`;
 
   return {
     title,
     description,
+    keywords,
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
@@ -48,6 +62,12 @@ export function constructMetadata({
     robots: {
       index: !noIndex,
       follow: !noIndex,
+    },
+    other: {
+      "geo.region": "TR-63",
+      "geo.placename": "Şanlıurfa",
+      "geo.position": "37.1674;38.7955",
+      "ICBM": "37.1674, 38.7955",
     },
   };
 }

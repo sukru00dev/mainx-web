@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Terminal, Moon, Sun, Menu, X, ChevronRight, Download } from "lucide-react";
 import ClientLoginModal from "./ClientLoginModal";
 import { useTheme } from "next-themes";
@@ -34,6 +34,7 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
+    { href: "/sanliurfa-yazilim", label: "Şanlıurfa Yazılım", highlight: true },
     { href: "/#hakkimizda", label: t("nav_about") },
     { href: "/#hizmetler", label: t("nav_services") },
     { href: "/#urunler", label: t("nav_projects") },
@@ -52,8 +53,15 @@ export default function Header() {
         <div className="w-full px-6 lg:px-16 2xl:px-24 mx-auto max-w-[100rem] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group z-10">
-            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors">
-              <img src="/logo.png" alt="MainX Logo" className="w-full h-full object-cover" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-primary/20 group-hover:border-primary/40 transition-colors relative">
+              <Image 
+                src="/logo.png" 
+                alt="MainX Stüdyoları Logo" 
+                width={40} 
+                height={40} 
+                className="w-full h-full object-cover" 
+                priority 
+              />
             </div>
             <span className="font-bold text-xl tracking-tight text-foreground">
               MainX<span className="text-primary">.</span>
@@ -61,12 +69,16 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                className={`text-sm transition-colors ${
+                  link.highlight
+                    ? "font-semibold text-primary hover:text-primary/80 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20"
+                    : "font-medium text-foreground/70 hover:text-foreground"
+                }`}
               >
                 {link.label}
               </Link>
@@ -175,7 +187,11 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-4 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all group"
+              className={`flex items-center justify-between px-4 py-4 rounded-xl transition-all group ${
+                link.highlight 
+                  ? "text-primary bg-primary/10 border border-primary/20 font-bold"
+                  : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
+              }`}
             >
               <span className="font-medium">{link.label}</span>
               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
