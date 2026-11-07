@@ -71,7 +71,12 @@ export function WebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    name: "MainX Yazılım&Geliştirme Stüdyoları",
+    name: "MainX Stüdyoları",
+    alternateName: [
+      "MainX",
+      "MainX Yazılım&Geliştirme Stüdyoları",
+      "MainX Web"
+    ],
     url: SITE_URL
   };
 
