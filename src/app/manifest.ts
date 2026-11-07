@@ -1,10 +1,10 @@
-﻿import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'MainX Stüdyoları',
+    name: 'MainX Yazılım&Geliştirme Stüdyoları',
     short_name: 'MainX',
-    description: 'Yazılım, Yapay Zeka ve Dijital Çözümler',
+    description: 'Şanlıurfa Yazılım Geliştirme, Web Tasarım & Mobil Uygulama Stüdyosu',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

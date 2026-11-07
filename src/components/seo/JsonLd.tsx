@@ -176,6 +176,16 @@ export function LocalBusinessSchema() {
     telephone: "+90 545 882 26 70",
     email: "hello.mainx@gmail.com",
     priceRange: "₺₺",
+    currenciesAccepted: "TRY, USD, EUR",
+    paymentAccepted: "Nakit, Banka Havalesi, Kredi Kartı",
+    hasMap: "https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+90 545 882 26 70",
+      contactType: "customer service",
+      areaServed: "TR",
+      availableLanguage: ["Turkish", "English"]
+    },
     founder: {
       "@type": "Person",
       name: "Şükrü BAŞ",
@@ -259,6 +269,65 @@ export function ServiceSchema({
       { "@type": "City", name: "Şanlıurfa" },
       { "@type": "AdministrativeArea", name: "Güneydoğu Anadolu" },
       { "@type": "Country", name: "Türkiye" }
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function SiteNavigationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Site Gezinti Menüsü",
+    itemListElement: [
+      {
+        "@type": "SiteNavigationElement",
+        position: 1,
+        name: "Şanlıurfa Yazılım & Çözümler",
+        description: "Şanlıurfa yerel yazılım geliştirme, OSB ve sektörel dijital çözümler",
+        url: `${SITE_URL}/sanliurfa-yazilim`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 2,
+        name: "Hizmet Kataloğu & Paketler",
+        description: "Web tasarım, mobil uygulama ve yapay zeka hazır hizmet paketleri",
+        url: `${SITE_URL}/katalog`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 3,
+        name: "Şanlıurfa Web Tasarım",
+        description: "SEO uyumlu, hızlı Next.js kurumsal web sitesi ve e-ticaret",
+        url: `${SITE_URL}/hizmetler/sanliurfa-web-tasarim-ve-kurumsal-web-sitesi`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 4,
+        name: "Özel Yazılım Geliştirme",
+        description: "B2B SaaS, kurumsal ERP/CRM ve iş akışı otomasyon yazılımları",
+        url: `${SITE_URL}/hizmetler/sanliurfa-ozel-yazilim-gelistirme`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 5,
+        name: "Mühendislik Blogu",
+        description: "Yazılım geliştirme, yapay zeka ve teknoloji rehberleri",
+        url: `${SITE_URL}/blog`
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 6,
+        name: "Şükrü BAŞ",
+        description: "MainX kurucusu ve baş yazılım mimarı hakkında detaylı bilgi",
+        url: `${SITE_URL}/sukru-bas`
+      }
     ]
   };
 

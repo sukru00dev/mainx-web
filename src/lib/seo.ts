@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mainx-web.vercel.app";
 
 const DEFAULT_KEYWORDS = [
@@ -25,7 +27,7 @@ export function constructMetadata({
   path?: string;
   noIndex?: boolean;
   keywords?: string[];
-} = {}) {
+} = {}): Metadata {
   const url = `${SITE_URL}${path}`;
 
   return {
@@ -62,6 +64,13 @@ export function constructMetadata({
     robots: {
       index: !noIndex,
       follow: !noIndex,
+      googleBot: {
+        index: !noIndex,
+        follow: !noIndex,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
     },
     other: {
       "geo.region": "TR-63",

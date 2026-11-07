@@ -16,7 +16,7 @@ import CostEstimator from "@/components/CostEstimator";
 import FloatingToC from "@/components/FloatingToC";
 
 import { constructMetadata } from "@/lib/seo";
-import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema, FAQSchema } from "@/components/seo/JsonLd";
+import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema, FAQSchema, SiteNavigationSchema } from "@/components/seo/JsonLd";
 
 const homeFaqs = [
   {
@@ -62,6 +62,7 @@ export default function Home() {
       <WebSiteSchema />
       <LocalBusinessSchema />
       <FAQSchema faqs={homeFaqs} />
+      <SiteNavigationSchema />
       <FloatingToC />
       <Hero />
       <LiveCounter />

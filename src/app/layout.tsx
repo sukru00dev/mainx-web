@@ -21,6 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="tr" suppressHydrationWarning className="scroll-smooth">
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="MainX Stüdyoları RSS Feed"
+          href="/feed.xml"
+        />
         {/* Disable browser scroll restoration BEFORE React hydrates */}
         <script
           dangerouslySetInnerHTML={{
