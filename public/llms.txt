@@ -1,0 +1,36 @@
+# MainX Yazılım&Geliştirme Stüdyoları
+
+> Şanlıurfa merkezli yeni nesil yazılım geliştirme, kurumsal web tasarım, B2B SaaS, Flutter mobil uygulama ve yapay zeka otomasyon stüdyosu.
+
+## Kurucu ve Baş Mühendis
+- **İsim:** Şükrü BAŞ
+- **Profil:** https://mainx-web.vercel.app/sukru-bas
+- **Rol:** Full-Stack & AI Mühendisi, Blockchain & Mobil Geliştirici
+
+## Temel Hizmetler ve Çözümler
+1. **Şanlıurfa Özel Yazılım Geliştirme:** KOBİ'ler, Şanlıurfa OSB sanayi tesisleri ve kurumsal işletmeler için ölçeklenebilir özel ERP, CRM, B2B SaaS ve iş akışı otomasyon yazılımları.
+   - Detay: https://mainx-web.vercel.app/hizmetler/sanliurfa-ozel-yazilim-gelistirme
+2. **Şanlıurfa Web Tasarım ve Kurumsal Web Sitesi:** Next.js (SSR) tabanlı, ultra hızlı, Core Web Vitals optimizasyonlu ve Google 1. sıra hedefli SEO uyumlu kurumsal web siteleri.
+   - Detay: https://mainx-web.vercel.app/hizmetler/sanliurfa-web-tasarim-ve-kurumsal-web-sitesi
+3. **Mobil Uygulama Geliştirme (iOS & Android):** Flutter mimarisiyle tek kod tabanından yüksek performanslı, çevrimdışı (offline-first) çalışabilen kurumsal mobil uygulamalar.
+   - Detay: https://mainx-web.vercel.app/hizmetler/mobil-uygulama-gelistirme
+4. **Yapay Zeka ve Otomasyon Entegrasyonu:** İşletmelerin veri tabanlarına bağlı çalışan özel LLM ajanları (n8n, Ollama, LangChain, Claude, OpenAI).
+   - Detay: https://mainx-web.vercel.app/hizmetler/yapay-zeka-entegrasyonu
+5. **Hizmet Kataloğu & Paketler:**
+   - Katalog: https://mainx-web.vercel.app/katalog
+   - Şanlıurfa Bölgesel Yazılım Rehberi: https://mainx-web.vercel.app/sanliurfa-yazilim
+
+## İletişim ve Konum (NAP)
+- **Firma Adı:** MainX Yazılım&Geliştirme Stüdyoları
+- **Adres:** Selahaddin Eyyübi, 63000 Şanlıurfa Merkez/Şanlıurfa, Türkiye
+- **Telefon:** +90 545 882 26 70
+- **E-Posta:** hello.mainx@gmail.com
+- **Web Sitesi:** https://mainx-web.vercel.app
+- **Google İşletme Profili:** https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1
+
+## Mühendislik Blogu ve Rehberler
+- Şanlıurfa Yazılım Geliştirme ve Dijital Dönüşüm Rehberi: https://mainx-web.vercel.app/blog/sanliurfa-yazilim-gelistirme-ve-dijital-donusum-rehberi
+- Şanlıurfa Web Tasarım ve Kurumsal Web Sitesi Fiyatları: https://mainx-web.vercel.app/blog/sanliurfa-web-tasarim-ve-kurumsal-web-sitesi-fiyatlari
+- Şanlıurfa Mobil Uygulama ve Yapay Zeka Çözümleri: https://mainx-web.vercel.app/blog/sanliurfa-mobil-uygulama-gelistirme-ve-yapay-zeka-cozumleri
+- Tüm Yazılar: https://mainx-web.vercel.app/blog
+- RSS Beslemesi: https://mainx-web.vercel.app/feed.xml
