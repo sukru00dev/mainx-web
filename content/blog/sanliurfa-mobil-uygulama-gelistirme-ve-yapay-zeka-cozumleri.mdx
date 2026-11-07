@@ -1,0 +1,67 @@
+---
+title: "Şanlıurfa Mobil Uygulama Geliştirme (iOS & Android) ve Yapay Zeka Otomasyonu"
+description: "Şanlıurfa'daki işletmeler için Flutter ile hem iOS hem Android'de çalışan yüksek performanslı offline-first mobil uygulamalar ve n8n ile yerel yapay zeka entegrasyonu rehberi."
+tags: ["Şanlıurfa Mobil Uygulama", "Flutter", "Yapay Zeka", "n8n", "Offline-First"]
+readTime: "8 dk"
+date: "2026-02-28"
+featured: true
+---
+
+# Şanlıurfa Mobil Uygulama Geliştirme (iOS & Android) ve Yapay Zeka Otomasyonu
+
+Akıllı telefonlar, modern iş dünyasında sahadaki satış ekiplerinin, fabrika yöneticilerinin ve müşterilerin en temel etkileşim aracı haline geldi. Ancak günümüzde bir mobil uygulama geliştirmek yalnızca ekrana butonlar yerleştirmekten ibaret değildir; uygulamanın **çevrimdışı (offline) çalışabilmesi**, **hızlı senkronize olması** ve arka planda **yapay zeka destekli otonom otomasyonlarla** beslenmesi gerekir.
+
+Bu yazıda, Google'ın modern UI toolkit'i **Flutter** ile iOS ve Android platformları için tek kod tabanından nasıl native performans elde ettiğimizi ve **n8n / Ollama** altyapısıyla şirket verilerini dışarı sızdırmadan yapay zeka ajanları kurgulamanın yöntemlerini anlatıyoruz.
+
+---
+
+## 1. Neden Hibrit Webview Değil, Flutter?
+
+Şanlıurfa'da mobil uygulama yaptırmak isteyen birçok işletmenin düştüğü en büyük hata; web sitelerini basit bir tarayıcı çerçevesine (Webview) gömerek "mobil uygulama yaptık" diyen ajanslarla çalışmaktır. Bu tür uygulamalar bildirimleri geciktirir, internet koptuğunda beyaz ekran verir ve uygulama mağazalarından (App Store & Google Play) düşük puan alarak hızla kaldırılır.
+
+MainX Stüdyoları olarak mobil projelerimizde doğrudan **Flutter & Dart** mimarisini kullanıyoruz:
+
+| Özellik | Webview / Eski Hibritler | MainX Flutter Mimarisi |
+|---|---|---|
+| **Performans** | 20 – 30 FPS, takılan kaydırma | 60 – 120 FPS akıcı Native hissi |
+| **İnternetsiz Çalışma** | Çalışmaz (Bağlantı Hatası) | %100 Offline-First (Hive NoSQL ile yerel depolama) |
+| **Donanım Erişimi** | Kısıtlı ve dengesiz | Kamera, GPS, Bluetooth ve Termal Yazıcıya tam erişim |
+| **Geliştirme Maliyeti** | İki ayrı ekiple (Swift + Kotlin) 2x maliyet | Tek kod tabanından iOS & Android (1x maliyet) |
+| **Mağaza Kabulü** | Yüksek ret (rejection) riski | App Store ve Google Play yönergelerine %100 uyum |
+
+Detaylı hizmet içeriğimizi incelemek için [Mobil Uygulama Geliştirme](/hizmetler/mobil-uygulama-gelistirme) sayfamıza göz atabilirsiniz.
+
+---
+
+## 2. Saha Operasyonlarında Offline-First Yaklaşımının Gücü
+
+Şanlıurfa'nın tarım sahalarında, kırsal dağıtım rotalarında veya OSB'deki yeraltı depo alanlarında internet bağlantısı sık sık kopabilir. Geliştirdiğimiz [Param Cepte](/projeler/param-cepte) finans uygulamasında kanıtladığımız üzere:
+
+* **Yerel Veritabanı (Hive NoSQL):** Kullanıcı satış kaydını, tahsilatı veya stok sayımını yaparken internet olup olmamasını düşünmez; veriler anında cihazın yerel belleğine milisaniyeler içinde kaydedilir.
+* **Akıllı Arka Plan Senkronizasyonu:** Cihaz Wi-Fi veya 4.5G şebekesine bağlandığında, yerel veriler otomatik olarak merkezi ERP sistemine veya bulut veritabanına aktarılır.
+* **Veri Çakışma Yönetimi:** Aynı kayıt üzerinde birden fazla saha personelinin işlem yapması durumunda akıllı zaman damgası (timestamp) algoritmaları devreye girerek veri kaybını önler.
+
+---
+
+## 3. Yapay Zeka (AI) ve Şirket İçi Otonom Ajanlar
+
+Mobil uygulamanın arkasında çalışan sistemlerin yapay zeka ile güçlendirilmesi, işletmelerin operasyonel verimliliğini 10 katına çıkarır. [AI Agent Factory](/projeler/ai-agent-factory) projemizde hayata geçirdiğimiz mimari prensipler:
+
+### 1. Şirket İçi Gizli Yapay Zeka (Private AI)
+Birçok işletme, şirket içi ciro, müşteri listesi veya tedarikçi fiyatlarının OpenAI gibi kamuya açık bulut sistemlerine gitmesinden çekinir. Biz n8n ve yerel LLM motoru **Ollama** ile yapay zekayı şirketinizin kendi sunucusuna kuruyoruz. Verileriniz asla dışarı çıkmaz.
+
+### 2. Akıllı Müşteri Temsilcisi ve Sipariş Botu
+WhatsApp veya mobil uygulama üzerinden gelen "Elimde şu ürün var mı?", "Siparişim nerede?", "Cari bakiyem ne kadar?" sorularını doğrudan şirket veritabanına bağlanarak anında yanıtlayan otonom ajanlar tasarlıyoruz.
+
+### 3. Otomatik Raporlama ve Fatura İşleme
+Saha elemanının fotoğrafını çektiği faturalar, irsaliyeler veya sipariş fişleri görüntü işleme modellerimiz (Vision AI) tarafından anında okunup muhasebe veritabanına işlenir.
+
+---
+
+## 4. Şanlıurfa İşletmeleri İçin 3 Dönüştürücü Mobil Senaryo
+
+1. **B2B Bayi ve Saha Satış Uygulaması:** Plasiyerlerin toptancıları gezerek anlık sipariş girdiği, araç içi stokları gördüğü ve barkod okuyucuyla satış yaptığı native mobil uygulama.
+2. **Restoran ve Kafe Sadakat (Loyalty) Uygulaması:** Müşterilerin her siparişte puan topladığı, dijital menüden sipariş verdiği ve anlık kampanya bildirimleri aldığı modern bir müşteri etkileşim kanalı.
+3. **Üretim ve Kalite Kontrol Takip Uygulaması:** Fabrika zemininde çalışan ustabaşıların üretilen parti numaralarını, hata kontrollerini ve bakım raporlarını tablet üzerinden girdiği sanayi otomasyonu.
+
+Mobil uygulama ve yapay zeka dönüşümünüzü Şanlıurfa'da yüz yüze analizle planlamak için [Şanlıurfa Yazılım](/sanliurfa-yazilim) merkezimizle hemen iletişime geçin.

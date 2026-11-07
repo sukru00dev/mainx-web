@@ -16,6 +16,7 @@ export function PersonSchema() {
         "@id": `${SITE_URL}/#organization`
       },
       sameAs: [
+        "https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1",
         "https://github.com/sukru00dev",
         "https://www.linkedin.com/in/sukrubasdev",
         "https://instagram.com/sukrukodluyor",
@@ -37,16 +38,24 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
-    name: "MainX Stüdyoları",
+    name: "MainX Yazılım&Geliştirme Stüdyoları",
+    alternateName: "MainX Stüdyoları",
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.png`,
-    description: "MainX Stüdyoları; web ve SaaS uygulamaları, yapay zeka, mobil uygulamalar, kurumsal yazılım ve modern dijital çözümler geliştirir.",
+    logo: `${SITE_URL}/logo.png`,
+    description: "Şanlıurfa merkezli yazılım geliştirme, kurumsal web tasarım, B2B SaaS, mobil uygulama ve yapay zeka çözümleri stüdyosu.",
     founder: {
       "@type": "Person",
       "@id": `${SITE_URL}/sukru-bas#person`,
       name: "Şükrü BAŞ",
       url: `${SITE_URL}/sukru-bas`
-    }
+    },
+    sameAs: [
+      "https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1",
+      "https://github.com/sukru00dev",
+      "https://www.linkedin.com/in/sukrubasdev",
+      "https://instagram.com/sukrukodluyor",
+      "https://medium.com/@sukrubas"
+    ]
   };
 
   return (
@@ -62,7 +71,7 @@ export function WebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    name: "MainX Stüdyoları",
+    name: "MainX Yazılım&Geliştirme Stüdyoları",
     url: SITE_URL
   };
 
@@ -104,10 +113,10 @@ export function ArticleSchema({
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "MainX Stüdyoları",
+      name: "MainX Yazılım&Geliştirme Stüdyoları",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/icon.png`
+        url: `${SITE_URL}/logo.png`
       }
     },
     mainEntityOfPage: {
@@ -159,7 +168,7 @@ export function LocalBusinessSchema() {
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/sukru-bas-yazilim-uzmani.jpg`,
     description: "Şanlıurfa merkezli yazılım geliştirme, kurumsal web tasarım, B2B SaaS, mobil uygulama geliştirme ve yapay zeka stüdyosu.",
-    telephone: "+905458822670",
+    telephone: "+90 545 882 26 70",
     email: "hello.mainx@gmail.com",
     priceRange: "₺₺",
     founder: {
@@ -180,6 +189,13 @@ export function LocalBusinessSchema() {
       latitude: 37.1674,
       longitude: 38.7955
     },
+    sameAs: [
+      "https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1",
+      "https://github.com/sukru00dev",
+      "https://www.linkedin.com/in/sukrubasdev",
+      "https://instagram.com/sukrukodluyor",
+      "https://medium.com/@sukrubas"
+    ],
     areaServed: [
       { "@type": "City", name: "Şanlıurfa" },
       { "@type": "AdministrativeArea", name: "Güneydoğu Anadolu" },
@@ -201,6 +217,44 @@ export function LocalBusinessSchema() {
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Yapay Zeka (AI) ve Otomasyon Entegrasyonu" } }
       ]
     }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function ServiceSchema({
+  name,
+  description,
+  url
+}: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: name,
+    description: description,
+    url: url,
+    provider: {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#localbusiness`,
+      name: "MainX Yazılım&Geliştirme Stüdyoları",
+      url: SITE_URL,
+      telephone: "+90 545 882 26 70"
+    },
+    areaServed: [
+      { "@type": "City", name: "Şanlıurfa" },
+      { "@type": "AdministrativeArea", name: "Güneydoğu Anadolu" },
+      { "@type": "Country", name: "Türkiye" }
+    ]
   };
 
   return (

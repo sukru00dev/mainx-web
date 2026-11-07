@@ -1,8 +1,8 @@
-﻿import { constructMetadata } from '@/lib/seo';
+import { constructMetadata } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-  title: 'Yazılım Geliştirme Hizmetleri | MainX Stüdyoları',
-  description: 'MainX Stüdyoları olarak B2B SaaS, Mobil Uygulama, Yapay Zeka (AI), Blok Zinciri ve kurumsal web tasarımı hizmetleri sunuyoruz. Şanlıurfa ve Türkiye geneli yazılım geliştirme.',
+  title: 'Şanlıurfa Yazılım Hizmet Kataloğu & Paketler | MainX Stüdyoları',
+  description: 'Şanlıurfa kurumsal web tasarım, B2B SaaS, mobil uygulama geliştirme ve yapay zeka otomasyon paketlerimizi inceleyin ve projenizi başlatın.',
   path: '/katalog',
 });
 

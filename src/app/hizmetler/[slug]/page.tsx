@@ -1,7 +1,8 @@
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, SITE_URL } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, Code2, Server, Smartphone, BrainCircuit, Blocks, Globe, Laptop } from "lucide-react";
+import { ServiceSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 const services = {
   "sanliurfa-web-tasarim-ve-kurumsal-web-sitesi": {
@@ -78,8 +79,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const serviceUrl = `${SITE_URL}/hizmetler/${resolvedParams.slug}`;
+
   return (
     <div className="min-h-screen bg-background">
+      <ServiceSchema 
+        name={service.title} 
+        description={service.description} 
+        url={serviceUrl} 
+      />
+      <BreadcrumbSchema items={[
+        { name: "Ana Sayfa", url: SITE_URL },
+        { name: "Hizmetlerimiz", url: `${SITE_URL}/katalog` },
+        { name: service.title, url: serviceUrl }
+      ]} />
       <div className="relative py-24 md:py-32 border-b border-border overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />

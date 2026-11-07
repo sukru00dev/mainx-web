@@ -92,9 +92,12 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6">İletişim & Konum</h4>
             <ul className="flex flex-col gap-4 text-foreground/50 text-sm">
+              <li className="font-semibold text-foreground/80">
+                MainX Yazılım&Geliştirme Stüdyoları
+              </li>
               <li className="flex items-start gap-2">
                 <span>📍</span>
-                <span>Selahaddin Eyyübi, Şanlıurfa / Türkiye</span>
+                <span>Selahaddin Eyyübi, 63000 Şanlıurfa Merkez/Şanlıurfa</span>
               </li>
               <li className="flex items-center gap-2">
                 <span>✉️</span>
@@ -102,12 +105,17 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span>📞</span>
-                <a href="tel:+905458822670" className="hover:text-primary transition-colors">+90 545 882 2670</a>
+                <a href="tel:+905458822670" className="hover:text-primary transition-colors">+90 545 882 26 70</a>
               </li>
               <li>
-                <span className="text-xs text-emerald-500 font-semibold bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 inline-block">
-                  ● 7/24 Teknik Danışmanlık ve Destek
-                </span>
+                <a 
+                  href="https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xs text-primary font-semibold bg-primary/10 hover:bg-primary/20 px-3 py-1.5 rounded-full border border-primary/20 inline-flex items-center gap-1.5 transition-colors"
+                >
+                  ⭐ Google İşletme Profilimiz / Yorum Bırakın
+                </a>
               </li>
             </ul>
           </div>

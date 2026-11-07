@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Terminal, User, Bot, CheckCircle2, Phone, Mail, MessageCircle } from "lucide-react";
+import { Send, Terminal, User, Bot, CheckCircle2, Phone, Mail, MessageCircle, MapPin, ExternalLink } from "lucide-react";
 
 type Message = {
   id: string;
@@ -123,8 +123,9 @@ export default function Contact() {
             <div className="w-full bg-foreground/5 border border-border rounded-3xl p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[50px] -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
               
-              <h3 className="text-xl font-bold mb-2">Direkt İletişime Geçin</h3>
-              <p className="text-sm text-foreground/60 mb-8">Yapay zeka asistanını beklemek istemiyorsanız, doğrudan ulaşabilirsiniz.</p>
+              <h3 className="text-xl font-bold mb-1">Direkt İletişime Geçin</h3>
+              <p className="text-xs font-semibold text-primary mb-1">MainX Yazılım&Geliştirme Stüdyoları</p>
+              <p className="text-sm text-foreground/60 mb-6">Şanlıurfa Merkez ofisimizle yüz yüze görüşebilir ya da doğrudan kanallardan anında ulaşabilirsiniz.</p>
               
               <div className="flex flex-col gap-4">
                 <a href="https://wa.me/905458822670" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-[#25D366]/10 hover:border-[#25D366]/30 border border-border transition-all group/item">
@@ -156,6 +157,32 @@ export default function Contact() {
                     <p className="text-xs text-foreground/50">hello.mainx@gmail.com</p>
                   </div>
                 </a>
+
+                <a 
+                  href="https://www.google.com/search?kgmid=/g/11nvv_hnwc&hl=tr-TR&q=MainX+Yaz%C4%B1l%C4%B1m%26Geli%C5%9Ftirme+St%C3%BCdyolar%C4%B1" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-amber-500/10 hover:border-amber-500/30 border border-border transition-all group/item"
+                >
+                  <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-bold text-foreground group-hover/item:text-amber-500 transition-colors">
+                        Google Haritalarda Görüntüle ve Yol Tarifi Al
+                      </p>
+                      <ExternalLink className="w-3.5 h-3.5 text-foreground/40 group-hover/item:text-amber-500 transition-colors shrink-0" />
+                    </div>
+                    <p className="text-xs text-foreground/60 truncate">Selahaddin Eyyübi, 63000 Şanlıurfa Merkez</p>
+                  </div>
+                </a>
+              </div>
+
+              <div className="mt-5 pt-4 border-t border-border/50 text-[11px] text-foreground/50 space-y-1">
+                <p><strong className="text-foreground/70">Firma:</strong> MainX Yazılım&Geliştirme Stüdyoları</p>
+                <p><strong className="text-foreground/70">Adres:</strong> Selahaddin Eyyübi, 63000 Şanlıurfa Merkez/Şanlıurfa</p>
+                <p><strong className="text-foreground/70">Telefon:</strong> +90 545 882 26 70</p>
               </div>
             </div>
           </div>

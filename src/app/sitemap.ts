@@ -55,8 +55,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/sanliurfa-yazilim`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     ...servicePages,
     ...blogs,

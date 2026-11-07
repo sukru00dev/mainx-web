@@ -6,8 +6,8 @@ import { getAllPosts } from "@/lib/mdx";
 import { BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Teknoloji ve Yazılım Blogu | MainX",
-  description: "Şükrü BAŞ tarafından yazılan blok zinciri, yapay zeka, mobil geliştirme ve yazılım mühendisliği üzerine teknik makaleler.",
+  title: "Şanlıurfa Yazılım, Yapay Zeka ve Teknoloji Blogu | MainX Stüdyoları",
+  description: "MainX Stüdyoları mühendislik blogu: Şanlıurfa yazılım geliştirme, kurumsal dijital dönüşüm, Flutter mobil uygulama, yapay zeka ve blok zinciri rehberleri.",
   path: "/blog",
 });
 
